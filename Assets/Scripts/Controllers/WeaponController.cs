@@ -6,8 +6,6 @@ public class WeaponController : MonoBehaviour {
 
     public ParticleSystem bulletParticleSystem;
 
-    private bool firing = false;
-
     // Start is called before the first frame update
     void Start() {
 
