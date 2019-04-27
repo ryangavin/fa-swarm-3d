@@ -19,9 +19,9 @@ public class Character : MonoBehaviour {
         damageable.OnDamaged -= OnDamaged;
     }
 
-    protected virtual void OnDamaged(GameObject from, int damage) {
-        Debug.Log("Hit from: " + from + " for: " + damage);
-        Health -= damage;
+    protected virtual void OnDamaged(DamageEvent eventArgs) {
+        Debug.Log("Hit from: " + eventArgs.Source + " for: " + eventArgs.Damage);
+        Health -= eventArgs.Damage;
         if (Health <= 0) {
             OnDeath();
         }
@@ -29,5 +29,8 @@ public class Character : MonoBehaviour {
 
     protected virtual void OnDeath() {
         GameObject.Destroy(gameObject);
+
+        // TODO publish an on death event
+        // Perhaps move to OnDamaged so no one can opt out of publishing the event by overriding OnDeath()
     }
 }

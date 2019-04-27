@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : Character {
 
@@ -32,11 +30,11 @@ public class Enemy : Character {
         }
     }
 
-    protected override void OnDamaged(GameObject from, int damage) {
+    protected override void OnDamaged(DamageEvent eventArgs) {
         // Filter out damage from other enemies
-        if (from.GetComponent<Enemy>() != null) {
+        if (eventArgs.Source.GetComponent<Enemy>() != null) {
             return;
         }
-        base.OnDamaged(from, damage);
+        base.OnDamaged(eventArgs);
     }
 }
