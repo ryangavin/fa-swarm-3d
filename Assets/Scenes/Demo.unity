@@ -175,15 +175,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5102698949632613547, guid: 2abf19653d633114faedf3b60dc6c39f,
-        type: 3}
-      propertyPath: CollisionModule.colliderForce
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102698949632613547, guid: 2abf19653d633114faedf3b60dc6c39f,
-        type: 3}
-      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
-      value: 1
+    - target: {fileID: 1528403185902992, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
+      propertyPath: m_Name
+      value: Character
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2abf19653d633114faedf3b60dc6c39f, type: 3}
@@ -416,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 4150302319993646409, guid: 202d8fea6dabebe46956069dc763b24b, type: 3}
-  Delay: 5
+  Delay: 0.5
 --- !u!135 &1399008746
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -489,25 +483,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1603855565 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1834027591292629818, guid: 2abf19653d633114faedf3b60dc6c39f,
-    type: 3}
-  m_PrefabInstance: {fileID: 18436725}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1603855569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603855565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cff5ba35bf8fd644bd3b6e76d62c996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamagePerHit: 1
 --- !u!1 &1818126447
 GameObject:
   m_ObjectHideFlags: 0

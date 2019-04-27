@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 303175446}
   - component: {fileID: 303175444}
   - component: {fileID: 93009320}
+  - component: {fileID: 974895366712113765}
   m_Layer: 0
   m_Name: AstronautCharacter
   m_TagString: Player
@@ -235,6 +236,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletParticleSystem: {fileID: 5102698949632613547}
+--- !u!114 &974895366712113765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147752367711628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2156964b7e6c1d940a10ccec32450c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158021920011488
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1007,7 @@ GameObject:
   - component: {fileID: 6270303491170235180}
   - component: {fileID: 5102698949632613547}
   - component: {fileID: 2545945059306834527}
+  - component: {fileID: 1603855569}
   m_Layer: 0
   m_Name: ProjectileParticleSystem
   m_TagString: Untagged
@@ -4541,7 +4555,7 @@ ParticleSystem:
     serializedVersion: 3
     type: 1
     collisionMode: 0
-    colliderForce: 2000
+    colliderForce: 200
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
@@ -4660,7 +4674,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5735,6 +5749,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1603855569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834027591292629818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cff5ba35bf8fd644bd3b6e76d62c996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePerHit: 1
 --- !u!1 &7568702385011199809
 GameObject:
   m_ObjectHideFlags: 0

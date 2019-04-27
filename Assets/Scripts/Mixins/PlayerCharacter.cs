@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class PlayerMovementController : MonoBehaviour {
+public class PlayerCharacter : Character {
 
     public float MoveSpeed = 10f;
 
@@ -63,5 +63,9 @@ public class PlayerMovementController : MonoBehaviour {
         }
         // TODO add a similar if statement
         transform.rotation = Quaternion.Euler(TargetRotation);
+    }
+
+    protected override void OnDeath() {
+        Debug.Log("You Died");
     }
 }

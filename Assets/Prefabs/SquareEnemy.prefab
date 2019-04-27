@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 4150302319993646407}
   - component: {fileID: 4150302319993646405}
   - component: {fileID: 4150302319993646404}
+  - component: {fileID: 2598727979558041115}
   - component: {fileID: 4150302319993646406}
   - component: {fileID: 835793072757380075}
+  - component: {fileID: 3451242760399401470}
   m_Layer: 8
   m_Name: SquareEnemy
   m_TagString: Untagged
@@ -64,6 +66,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2598727979558041115
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150302319993646409}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f918103613ff8e4b903bac6e2064021, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4150302319993646406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a0438856348a44a8bee8dbb2b0bbeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  Health: 3
+  MoveSpeed: 15
 --- !u!114 &835793072757380075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +111,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2156964b7e6c1d940a10ccec32450c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3451242760399401470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150302319993646409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c24a368061abd4eb410d2d03674839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePerHit: 1
 --- !u!1 &4150302321955230686
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +135,6 @@ GameObject:
   - component: {fileID: 4150302321955230687}
   - component: {fileID: 4150302321955230683}
   - component: {fileID: 4150302321955230682}
-  - component: {fileID: 4150302321955230684}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -167,22 +201,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!95 &4150302321955230684
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4150302321955230686}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f918103613ff8e4b903bac6e2064021, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

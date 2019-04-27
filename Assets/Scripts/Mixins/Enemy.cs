@@ -2,27 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Damageable))]
-public class Enemy : MonoBehaviour {
+public class Enemy : Character {
 
     public float MoveSpeed = 10f;
-    public int Health = 3;
-
-    private Damageable damageable;
 
     private GameObject target;
 
     private Vector3 TargetPosition = Vector3.zero;
-
-    // Register listeners
-    void OnEnable() {
-        damageable = GetComponent<Damageable>();
-        damageable.OnDamaged += OnDamaged;
-    }
-
-    void OnDisable() {
-        damageable.OnDamaged -= OnDamaged;
-    }
 
     // Start is called before the first frame update
     void Start() {
@@ -46,12 +32,11 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    void OnDamaged(GameObject from, int damage) {
-        Debug.Log("Hit from: " + from+ " for: "+damage);
-        Health -= damage;
-        if (Health <= 0) {
-            GameObject.Destroy(gameObject);
+    protected override void OnDamaged(GameObject from, int damage) {
+        // Filter out damage from other enemies
+        if (from.GetComponent<Enemy>() != null) {
+            return;
         }
+        base.OnDamaged(from, damage);
     }
-
 }
