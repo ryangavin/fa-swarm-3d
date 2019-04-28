@@ -70,7 +70,7 @@ public static class EventBus {
         if (publishedEvent.Source != null) {
             Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.Source, typeof(T));
             if (sourceListeners.ContainsKey(key)) {
-                foreach (Action<object> action in sourceListeners[key]) {
+                foreach (Action<object> action in new List<Action<object>>(sourceListeners[key])) {
                     action(publishedEvent);
                 }
             }
@@ -79,7 +79,7 @@ public static class EventBus {
         if (publishedEvent.Target != null) {
             Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.Target, typeof(T));
             if (targetListeners.ContainsKey(key)) {
-                foreach (Action<object> action in targetListeners[key]) {
+                foreach (Action<object> action in new List<Action<object>>(targetListeners[key])) {
                     action(publishedEvent);
                 }
             }
@@ -87,7 +87,7 @@ public static class EventBus {
 
         Type globalKey = typeof(T);
         if (globalListeners.ContainsKey(globalKey)) {
-            foreach (Action<object> action in globalListeners[globalKey]) {
+            foreach (Action<object> action in new List<Action<object>>(globalListeners[globalKey])) {
                 action(publishedEvent);
             }
         }

@@ -13,7 +13,7 @@ public class Character : MonoBehaviour {
     }
 
     void OnDisable() {
-        //EventBus.DeRegister<DamageEvent>(OnDamaged, null, gameObject);
+        EventBus.DeRegister<DamageEvent>(OnDamaged, null, gameObject);
     }
 
     protected virtual void OnDamaged(object eventArgs) {
@@ -27,7 +27,6 @@ public class Character : MonoBehaviour {
     }
 
     protected virtual void OnDeath() {
-        Debug.Log("OnDeath");
         GameObject.Destroy(gameObject);
 
         // TODO publish an on death event

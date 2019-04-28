@@ -6,17 +6,25 @@ public class GameStateController : MonoBehaviour {
 
     private GameState gamestate;
 
-    // Start is called before the first frame update
-    void Start() {
-        gamestate = new GameState();
+    void OnEnable() {
+        gamestate = ScriptableObject.CreateInstance<GameState>();
+        EventBus.Register<DamageEvent>(OnDamage, global: true);
     }
 
-    // Update is called once per frame
+    void OnDisable() {
+        EventBus.DeRegister<DamageEvent>(OnDamage);
+    }
+
     void Update() {
 
     }
 
-    void OnEnemyDestroy() {
-        gamestate.Score += 1;
+    void OnDamage(object eventArgs) {
+        DamageEvent damageEvent = (DamageEvent)eventArgs;
+        if (damageEvent.Source.GetComponent<Enemy>() == null) {
+            int previousScore = gamestate.score;
+            gamestate.score += damageEvent.Damage;
+            EventBus.Publish(new ScoreChangeEvent(gameObject, gamestate.score - previousScore, gamestate.score));
+        }
     }
 }
