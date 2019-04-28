@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour {
 
-    public delegate void OnDamageEventHandler(DamageEvent eventArgs);
-    public event OnDamageEventHandler OnDamaged;
-
-    public void Damage(GameObject from, int damage) {
-        DamageEvent eventArgs = new DamageEvent(from, this, damage);
-        OnDamaged?.Invoke(eventArgs);
+    public void Damage(GameObject source, int damage) {
+        DamageEvent eventArgs = new DamageEvent(source, gameObject, damage);
+        EventBus.Publish(eventArgs);
     }
 
 }

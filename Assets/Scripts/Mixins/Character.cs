@@ -7,27 +7,27 @@ public class Character : MonoBehaviour {
 
     public int Health = 3;
 
-    private Damageable damageable;
-
     // Register listeners
     void OnEnable() {
-        damageable = GetComponent<Damageable>();
-        damageable.OnDamaged += OnDamaged;
+        EventBus.Register<DamageEvent>(OnDamaged, null, gameObject);
     }
 
     void OnDisable() {
-        damageable.OnDamaged -= OnDamaged;
+        //EventBus.DeRegister<DamageEvent>(OnDamaged, null, gameObject);
     }
 
-    protected virtual void OnDamaged(DamageEvent eventArgs) {
-        Debug.Log("Hit from: " + eventArgs.Source + " for: " + eventArgs.Damage);
-        Health -= eventArgs.Damage;
+    protected virtual void OnDamaged(object eventArgs) {
+        DamageEvent damageEvent = (DamageEvent)eventArgs;
+
+        Debug.Log("Hit from: " + damageEvent.Source + " for: " + damageEvent.Damage);
+        Health -= damageEvent.Damage;
         if (Health <= 0) {
             OnDeath();
         }
     }
 
     protected virtual void OnDeath() {
+        Debug.Log("OnDeath");
         GameObject.Destroy(gameObject);
 
         // TODO publish an on death event

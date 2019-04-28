@@ -30,9 +30,10 @@ public class Enemy : Character {
         }
     }
 
-    protected override void OnDamaged(DamageEvent eventArgs) {
+    protected override void OnDamaged(object eventArgs) {
+        DamageEvent damagedDevent = (DamageEvent)eventArgs;
         // Filter out damage from other enemies
-        if (eventArgs.Source.GetComponent<Enemy>() != null) {
+        if (damagedDevent.Source.GetComponent<Enemy>() != null) {
             return;
         }
         base.OnDamaged(eventArgs);

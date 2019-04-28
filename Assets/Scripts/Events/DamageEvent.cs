@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class DamageEvent : Event {
 
-    private Damageable damageable;
     private int damage;
 
-    public DamageEvent(GameObject source, Damageable damageable, int damage) : base(source) {
-        this.damageable = damageable;
+    public DamageEvent(GameObject source, GameObject target, int damage) : base(source, target) {
         this.damage = damage;
     }
 
-    public Damageable Damageable { get => damageable;}
     public int Damage { get => damage;}
 }
