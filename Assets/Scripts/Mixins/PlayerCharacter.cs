@@ -13,6 +13,7 @@ public class PlayerCharacter : Character {
 
     private Animator Animator;
     private Rigidbody rb;
+    public GameObject CharacterModel;
 
     private Vector3 TargetDirection = Vector3.zero;
     private float TargetRotation;
@@ -63,12 +64,12 @@ public class PlayerCharacter : Character {
     // This is where any physics bodies should be modified.
     void FixedUpdate() {
         if (TargetDirection != Vector3.zero) {
-            rb.MovePosition(transform.position + TargetDirection * MoveSpeed * Time.deltaTime);
+            rb.MovePosition(transform.position + transform.TransformDirection(TargetDirection) * MoveSpeed * Time.deltaTime);
         }
         // TODO add a similar if statement
         Vector3 currentRotation = transform.rotation.eulerAngles;
         Vector3 targetRotation = new Vector3(currentRotation.x, TargetRotation, currentRotation.z);
-        transform.rotation = Quaternion.Euler(targetRotation);
+        //transform.rotation = Quaternion.Euler(targetRotation);
     }
 
     protected override void OnDeath() {

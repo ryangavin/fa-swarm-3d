@@ -41,7 +41,7 @@ public class Attractor : MonoBehaviour {
             Vector3 attractableUp = attractable.transform.up;
             float distance = Vector3.Distance(transform.position, attractable.transform.position);
 
-            attractableRb.AddForce(gravityUp * ((gravity * attractableRb.mass * AttractorMass)/(distance*distance)));
+            attractableRb.AddForce(gravityUp * gravity * attractableRb.mass);
 
             Quaternion targetRotation = Quaternion.FromToRotation(attractableUp, gravityUp) * attractable.transform.rotation;
             attractable.transform.rotation = Quaternion.Slerp(attractable.transform.rotation, targetRotation, 50f * Time.fixedDeltaTime);
