@@ -6,15 +6,16 @@ using UnityEngine;
 // TODO This class should only contain the members and functions that make this differ from a regular character.
 // TODO The actual player input should come from another class
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerCharacter : Character {
 
     public float MoveSpeed = 10f;
 
     private Animator Animator;
-    private Camera cam;
+    private Rigidbody rb;
 
-    private Vector3 TargetPosition = Vector3.zero;
-    private Vector3 TargetRotation = Vector3.zero;
+    private Vector3 TargetDirection = Vector3.zero;
+    private float TargetRotation;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,8 +23,7 @@ public class PlayerCharacter : Character {
         Cursor.lockState = CursorLockMode.Confined;
 
         Animator = GetComponent<Animator>();
-
-        cam = Camera.main;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame.
@@ -39,12 +39,9 @@ public class PlayerCharacter : Character {
         // Note the Time.deltaTime call which returns the time since call to Update(). This ensures our players movement is adjusted for the irregular intervals of the Update() call.
         // TODO I'm not sure if this supports running up and down hills. It seems like we would try to force the player through the geometry in the x or z direction.
         if (leftRightInput != 0 || upDownInput != 0) {
-            TargetPosition = new Vector3 {
-                x = transform.position.x + (leftRightInput * MoveSpeed * Time.deltaTime),
-                z = transform.position.z + (upDownInput * MoveSpeed * Time.deltaTime),
-            };
+            TargetDirection = new Vector3(x: leftRightInput, y: 0, z: upDownInput).normalized;
         } else {
-            TargetPosition = Vector3.zero;
+            TargetDirection = Vector3.zero;
         }
 
         // Update the animator
@@ -57,8 +54,7 @@ public class PlayerCharacter : Character {
         if (plane.Raycast(ray, out distance)) {
             Vector3 target = ray.GetPoint(distance);
             Vector3 direction = target - transform.position;
-            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            TargetRotation = new Vector3(0, angle, 0);
+            TargetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         }
        
     }
@@ -66,11 +62,13 @@ public class PlayerCharacter : Character {
     // Runs at a guaranteed interval (something like every .2 seconds)
     // This is where any physics bodies should be modified.
     void FixedUpdate() {
-        if (TargetPosition != Vector3.zero) {
-            transform.position = TargetPosition;
+        if (TargetDirection != Vector3.zero) {
+            rb.MovePosition(transform.position + TargetDirection * MoveSpeed * Time.deltaTime);
         }
         // TODO add a similar if statement
-        transform.rotation = Quaternion.Euler(TargetRotation);
+        Vector3 currentRotation = transform.rotation.eulerAngles;
+        Vector3 targetRotation = new Vector3(currentRotation.x, TargetRotation, currentRotation.z);
+        transform.rotation = Quaternion.Euler(targetRotation);
     }
 
     protected override void OnDeath() {
