@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO Refactor out the bits about controlling the character
+// TODO This class should only contain the members and functions that make this differ from a regular character.
+// TODO The actual player input should come from another class
 [RequireComponent(typeof(Animator))]
 public class PlayerCharacter : Character {
 
@@ -48,11 +51,16 @@ public class PlayerCharacter : Character {
         Animator.SetBool("Moving", (leftRightInput != 0 || upDownInput != 0));
 
         // Figure out which way the character should face based on the relative position of the mouse
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 characterScreenPosition = cam.WorldToScreenPoint(transform.position);
-        Vector2 relativeDirection = mousePosition - characterScreenPosition;
-        float angle = Mathf.Atan2(relativeDirection.x, relativeDirection.y) * Mathf.Rad2Deg;
-        TargetRotation = new Vector3(0, angle, 0);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane plane = new Plane(Vector3.up, Vector3.zero);
+        float distance;
+        if (plane.Raycast(ray, out distance)) {
+            Vector3 target = ray.GetPoint(distance);
+            Vector3 direction = target - transform.position;
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            TargetRotation = new Vector3(0, angle, 0);
+        }
+       
     }
 
     // Runs at a guaranteed interval (something like every .2 seconds)
