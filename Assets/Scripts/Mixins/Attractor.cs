@@ -39,7 +39,6 @@ public class Attractor : MonoBehaviour {
             // Apply the attraction
             Vector3 gravityUp = (attractable.transform.position - transform.position).normalized;
             Vector3 attractableUp = attractable.transform.up;
-            float distance = Vector3.Distance(transform.position, attractable.transform.position);
 
             attractableRb.AddForce(gravityUp * gravity * attractableRb.mass);
 
