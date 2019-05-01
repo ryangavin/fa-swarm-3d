@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour {
     private void Update() {
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > Delay) {
-            Instantiate(Enemy);
+            Instantiate(Enemy, transform.position, Quaternion.identity);
             timeSinceLastSpawn = 0f;
         }
     }

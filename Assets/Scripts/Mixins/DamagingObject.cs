@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Adds a damage component to a GameObject which applies DamagePerHit to any Damageable that collides with the GameObject.
@@ -14,7 +12,17 @@ public class DamagingObject : MonoBehaviour
         // Make sure we only publish events if the collision is with a Damageable. 
         Damageable damageable = collision.gameObject.GetComponent<Damageable>();
         if (damageable != null) {
+            Debug.Log(collision.gameObject);
             damageable.Damage(gameObject, DamagePerHit);
+
+            // Call the callback so any super classes can add functionality
+            AfterDamage(collision.gameObject);
         }
     }
+
+    
+
+    protected virtual void BeforeDamage(GameObject collision) { }
+
+    protected virtual void AfterDamage(GameObject collision) { }
 }

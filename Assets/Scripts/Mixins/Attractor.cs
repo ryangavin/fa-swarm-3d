@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Attractor : MonoBehaviour {
 
-    // TODO move this to configuration somewhere
-    private const float gravity = -9.81f;
-
-    public float AttractorMass = 999999;
+    public float AttractorMass = PhyiscalConstants.MassOfEarth;
 
     private HashSet<GameObject> attractables = new HashSet<GameObject>();
 
@@ -39,8 +36,13 @@ public class Attractor : MonoBehaviour {
             // Apply the attraction
             Vector3 gravityUp = (attractable.transform.position - transform.position).normalized;
             Vector3 attractableUp = attractable.transform.up;
+            float distance = Vector3.Distance(transform.position, attractable.transform.position) / 1000;   // Convert to meters
 
-            attractableRb.AddForce(gravityUp * gravity * attractableRb.mass);
+            // Actual gravitation forumula taking into account the masses of the objects and their distances
+            float forceToApply = (PhyiscalConstants.G * attractableRb.mass * AttractorMass) / Mathf.Pow(distance, 2);
+
+            // Using force mode Acceleration, we can simulate adding the force in newtons to the rigidbody
+            attractableRb.AddForce(-gravityUp * forceToApply, mode: ForceMode.Acceleration);
 
             Quaternion targetRotation = Quaternion.FromToRotation(attractableUp, gravityUp) * attractable.transform.rotation;
             attractable.transform.rotation = Quaternion.Slerp(attractable.transform.rotation, targetRotation, 50f * Time.fixedDeltaTime);

@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DefaultParticleMaterial
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
@@ -85,9 +85,9 @@ Material:
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 0
-    - _Glossiness: 0.89
+    - _Glossiness: 0.697
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.559
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -109,8 +109,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorAddSubDiff: {r: -1, g: 1, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0.8666667}
-    - _EmissionColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.43586442, a: 0.62352943}
+    - _EmissionColor: {r: 0, g: 0.20392157, b: 1.7098039, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
 --- !u!114 &183992426630211355
