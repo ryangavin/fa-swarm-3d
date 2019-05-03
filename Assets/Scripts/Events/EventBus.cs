@@ -67,8 +67,8 @@ public static class EventBus {
 
     // Publish an event
     public static void Publish<T>(T publishedEvent) where T : Event {
-        if (publishedEvent.Source != null) {
-            Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.Source, typeof(T));
+        if (publishedEvent.source != null) {
+            Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.source, typeof(T));
             if (sourceListeners.ContainsKey(key)) {
                 foreach (Action<object> action in new List<Action<object>>(sourceListeners[key])) {
                     action(publishedEvent);
@@ -76,8 +76,8 @@ public static class EventBus {
             }
         }
 
-        if (publishedEvent.Target != null) {
-            Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.Target, typeof(T));
+        if (publishedEvent.target != null) {
+            Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.target, typeof(T));
             if (targetListeners.ContainsKey(key)) {
                 foreach (Action<object> action in new List<Action<object>>(targetListeners[key])) {
                     action(publishedEvent);

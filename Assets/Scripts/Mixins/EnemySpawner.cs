@@ -16,7 +16,9 @@ public class EnemySpawner : MonoBehaviour {
     private void Update() {
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > Delay) {
-            Instantiate(Enemy, transform.position, Quaternion.identity);
+            GameObject newEnemy = Instantiate(Enemy, transform.position, Quaternion.identity);
+            newEnemy.transform.localScale = new Vector3(4, 4, 4);
+
             timeSinceLastSpawn = 0f;
         }
     }

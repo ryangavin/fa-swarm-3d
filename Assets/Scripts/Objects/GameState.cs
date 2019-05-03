@@ -9,4 +9,5 @@ public class GameState : ScriptableObject {
 
     public GameObject player;
     public int score = 0;
+    public int currentHealth;
 }

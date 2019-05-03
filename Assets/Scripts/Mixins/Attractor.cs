@@ -18,7 +18,7 @@ public class Attractor : MonoBehaviour {
 
     void OnAttractableStart(object eventArgs) {
         AttractableStartEvent attractableStartEvent = (AttractableStartEvent)eventArgs;
-        attractables.Add(attractableStartEvent.Source);
+        attractables.Add(attractableStartEvent.source);
     }
 
     void FixedUpdate() {
@@ -26,8 +26,9 @@ public class Attractor : MonoBehaviour {
         // Create a new list to iterate over because attractables might get updated by another call to Update() during iteration
         foreach (GameObject attractable in new List<GameObject>(attractables)) {
             // Check if they should be removed from the set because the object doesn't exist anymore
-            if (attractable.activeInHierarchy == false) {
+            if (attractable == null) {
                 attractables.Remove(attractable);
+                continue;
             }
 
             // Get the rb

@@ -5,15 +5,31 @@ using UnityEngine;
 public class OrbitalProjectile : MonoBehaviour {
 
     public GameObject Target;
+    public Vector3 Axis = Vector3.up;
+    public float ProjectileVelocity = 80.0f;
+    public float ImpactFoce = 30;
+    public float Lifetime = 5f;
 
     // Update is called once per frame
     void Update() {
-        Vector3 relativePos = Target.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        if (Lifetime < 0) {
+            GameObject.Destroy(gameObject);
+            return;
+        }
 
-        Quaternion current = transform.localRotation;
+        transform.RotateAround(Target.transform.position, Axis, ProjectileVelocity * Time.deltaTime);
 
-        transform.localRotation = Quaternion.Slerp(current, rotation, Time.deltaTime);
-        transform.Translate(0, 0, 3 * Time.deltaTime);
+        Lifetime -= Time.deltaTime;
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.rigidbody != null) {
+            // Apply a force to the rigidbody
+            collision.rigidbody.AddForce(transform.forward * ImpactFoce, mode: ForceMode.VelocityChange);
+
+            // TODO add some callback so other things can do stuff
+
+            GameObject.Destroy(gameObject);
+        }
     }
 }

@@ -2,8 +2,6 @@
 
 public class Enemy : Character {
 
-    public float MoveSpeed = 10f;
-
     private GameObject target;
 
     private Vector3 TargetPosition = Vector3.zero;
@@ -33,7 +31,7 @@ public class Enemy : Character {
     protected override void OnDamaged(object eventArgs) {
         DamageEvent damagedDevent = (DamageEvent)eventArgs;
         // Filter out damage from other enemies
-        if (damagedDevent.Source.GetComponent<Enemy>() != null) {
+        if (damagedDevent.source.GetComponent<Enemy>() != null) {
             return;
         }
         base.OnDamaged(eventArgs);

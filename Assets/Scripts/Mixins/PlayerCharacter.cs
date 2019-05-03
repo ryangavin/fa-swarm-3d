@@ -23,7 +23,7 @@ public class PlayerCharacter : Character {
         if (plane.Raycast(ray, out distance)) {
             Vector3 target = ray.GetPoint(distance);
             Vector3 direction = transform.InverseTransformPoint(target);
-            SetRotation(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg);
+            Rotate(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg);
         }
         
         if (Input.GetMouseButtonDown(0)) {

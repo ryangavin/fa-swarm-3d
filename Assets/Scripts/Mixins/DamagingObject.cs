@@ -12,7 +12,6 @@ public class DamagingObject : MonoBehaviour
         // Make sure we only publish events if the collision is with a Damageable. 
         Damageable damageable = collision.gameObject.GetComponent<Damageable>();
         if (damageable != null) {
-            Debug.Log(collision.gameObject);
             damageable.Damage(gameObject, DamagePerHit);
 
             // Call the callback so any super classes can add functionality
