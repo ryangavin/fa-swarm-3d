@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 // Responsible for holding the state of the game
 // Basically the Dungeon Master
 public class GameStateManager : MonoBehaviour {
 
-    // TODO refactor this to be a Character Scriptable Object
-    public GameObject PlayerCharacter;
-    public Vector3 SpawnPoint;
+    public GameObject playerCharacterContainer;
+    public GameObject playerCamera;
+    public CharacterScriptableObject playerCharacter;
+    public Vector3 spawnPoint;    // TODO move this to some level data object
 
     public static GameStateManager Instance { get; private set; }
 
@@ -25,10 +27,17 @@ public class GameStateManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        GameObject playerCharacterInstance = Instantiate(PlayerCharacter, position: SpawnPoint, rotation: Quaternion.identity);
-        playerCharacterInstance.name = "PlayerCharacter";
+        // Spawn the player character
+        GameObject playerCharacterInstance = Instantiate(playerCharacterContainer, spawnPoint, Quaternion.identity);
+        playerCharacterInstance.name = "PlayerCharacter"; 
+        
+        // Spawn the camera
+        var playerCameraInstance = Instantiate(playerCamera);
+        playerCameraInstance.name = "PlayerCamera";
+        
+        // Update the gamestate
         Gamestate.player = playerCharacterInstance;
-        Gamestate.currentHealth = 3; // TODO fix this;
+        Gamestate.currentHealth = playerCharacter.health;
     }
 
     void OnDestroy() {

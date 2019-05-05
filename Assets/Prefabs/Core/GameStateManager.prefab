@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6419278204495267583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.022210449, y: 1.1354103, z: -0.082202315}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddb2ca8c25e39246ae11cf3020b57e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCharacter: {fileID: 1147752367711628, guid: 2abf19653d633114faedf3b60dc6c39f,
+  playerCharacterContainer: {fileID: 1147752367711628, guid: 2abf19653d633114faedf3b60dc6c39f,
     type: 3}
-  SpawnPoint: {x: 0, y: 0, z: 0}
+  playerCamera: {fileID: 763081534303884665, guid: f955afa8ad989fe4dbd7957abe125056,
+    type: 3}
+  playerCharacter: {fileID: 11400000, guid: 63b561253256961438c4abd4bda17436, type: 2}
+  spawnPoint: {x: 0, y: 0, z: 0}

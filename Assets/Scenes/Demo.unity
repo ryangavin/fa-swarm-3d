@@ -241,7 +241,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0.03125, y: -0.046875, z: 0, w: 7}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -404,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1548670119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,17 +653,17 @@ PrefabInstance:
     - target: {fileID: 6419278204495267576, guid: b1f7108bb82233f4ba2df26b21c0fb69,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.022210449
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6419278204495267576, guid: b1f7108bb82233f4ba2df26b21c0fb69,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1354103
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6419278204495267576, guid: b1f7108bb82233f4ba2df26b21c0fb69,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.082202315
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6419278204495267576, guid: b1f7108bb82233f4ba2df26b21c0fb69,
         type: 3}
@@ -707,19 +707,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419278204495267577, guid: b1f7108bb82233f4ba2df26b21c0fb69,
         type: 3}
-      propertyPath: PlayerCharacter
-      value: 
-      objectReference: {fileID: 1147752367711628, guid: 2abf19653d633114faedf3b60dc6c39f,
-        type: 3}
-    - target: {fileID: 6419278204495267577, guid: b1f7108bb82233f4ba2df26b21c0fb69,
-        type: 3}
-      propertyPath: SpawnPoint.y
-      value: 37
-      objectReference: {fileID: 0}
-    - target: {fileID: 6419278204495267577, guid: b1f7108bb82233f4ba2df26b21c0fb69,
-        type: 3}
-      propertyPath: SpawnPoint.z
-      value: -17
+      propertyPath: spawnPoint.y
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f7108bb82233f4ba2df26b21c0fb69, type: 3}
