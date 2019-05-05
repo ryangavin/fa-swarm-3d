@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class HealthController : MonoBehaviour {
     public GameObject healthIcon;
     private GameObject _target;
+    private Transform _transform;
 
-    void OnDisable() {
+    private void OnDisable() {
         EventBus.DeRegister<CharacterHealthChangeEvent>(OnCharacterHealthChange, target: _target);
     }
 
-    void Start() {
+    private void Start() {
+        _transform = transform;
         _target = GameStateManager.Instance.Gamestate.player;
         EventBus.Register<CharacterHealthChangeEvent>(OnCharacterHealthChange, target: _target);
         DrawHealth(GameStateManager.Instance.Gamestate.currentHealth);    
@@ -24,13 +23,13 @@ public class HealthController : MonoBehaviour {
 
     private void DrawHealth(int health) {
         foreach (Transform child in transform) {
-            GameObject.Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
 
         for (int i = 0; i < health; i ++) {
             Debug.Log("Drawing Health");
-            GameObject healthSprite = Instantiate(healthIcon, parent: transform, position: transform.position + new Vector3(-20 + (-60 * i), 0), rotation: Quaternion.identity);
-            healthSprite.name = "HealthIcon" + i;
+            var healthIconObject = Instantiate(healthIcon, parent: _transform, position: _transform.position + new Vector3(-20 + (-60 * i), 0), rotation: Quaternion.identity);
+            healthIconObject.name = "HealthIcon" + i;
         }
     }
 }

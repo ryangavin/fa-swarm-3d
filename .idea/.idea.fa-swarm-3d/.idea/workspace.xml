@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93b28a6d-10b2-41f5-bbf0-5495f4532e2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Core/PlayerCharacterContainer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Core/PlayerCharacterContainer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Characters/Astronaut.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Characters/Astronaut.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/HealthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HealthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/HUD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/HUD.prefab" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,17 +81,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/UI/HealthController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+            <state relative-caret-position="285">
+              <caret line="19" column="81" lean-forward="true" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
               <folding>
-                <marker date="1557095680462" expanded="false" signature="6:111" ph="..." />
-                <marker date="1557095680462" expanded="true" signature="159:1288" ph="{...}" />
-                <marker date="1557095680462" expanded="true" signature="249:355" ph="{...}" />
-                <marker date="1557095680462" expanded="true" signature="374:615" ph="{...}" />
-                <marker date="1557095680462" expanded="true" signature="671:805" ph="{...}" />
-                <marker date="1557095680462" expanded="true" signature="847:1286" ph="{...}" />
-                <marker date="1557095680462" expanded="true" signature="896:957" ph="{...}" />
-                <marker date="1557095680462" expanded="true" signature="1001:1280" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="66:1269" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="198:304" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="331:604" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="660:794" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="836:1267" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="885:935" ph="{...}" />
+                <marker date="1557096084398" expanded="true" signature="979:1261" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -206,6 +202,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Camera.main</find>
+      <find>healthSprite</find>
     </findStrings>
     <replaceStrings>
       <replace>_camera</replace>
@@ -320,12 +317,12 @@
       <updated>1556940577315</updated>
       <workItem from="1556940581491" duration="4665000" />
       <workItem from="1557072729534" duration="2295000" />
-      <workItem from="1557091124837" duration="4545000" />
+      <workItem from="1557091124837" duration="4954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11505000" />
+    <option name="totallyTimeSpent" value="11914000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,17 +545,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/UI/HealthController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        <state relative-caret-position="285">
+          <caret line="19" column="81" lean-forward="true" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
           <folding>
-            <marker date="1557095680462" expanded="false" signature="6:111" ph="..." />
-            <marker date="1557095680462" expanded="true" signature="159:1288" ph="{...}" />
-            <marker date="1557095680462" expanded="true" signature="249:355" ph="{...}" />
-            <marker date="1557095680462" expanded="true" signature="374:615" ph="{...}" />
-            <marker date="1557095680462" expanded="true" signature="671:805" ph="{...}" />
-            <marker date="1557095680462" expanded="true" signature="847:1286" ph="{...}" />
-            <marker date="1557095680462" expanded="true" signature="896:957" ph="{...}" />
-            <marker date="1557095680462" expanded="true" signature="1001:1280" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="66:1269" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="198:304" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="331:604" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="660:794" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="836:1267" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="885:935" ph="{...}" />
+            <marker date="1557096084398" expanded="true" signature="979:1261" ph="{...}" />
           </folding>
         </state>
       </provider>
