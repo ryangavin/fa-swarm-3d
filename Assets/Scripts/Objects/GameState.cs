@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameState : ScriptableObject {
 
     public GameObject player;
+    public CharacterScriptableObject playerCharacter;
     public int score = 0;
     public int currentHealth;
 }

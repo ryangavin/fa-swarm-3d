@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 303175444}
   - component: {fileID: 974895366712113765}
   - component: {fileID: 6529223478928619438}
+  - component: {fileID: 6558996179720491475}
   m_Layer: 9
   m_Name: PlayerCharacterContainer
   m_TagString: Player
@@ -76,13 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08663d844ff052043a0b2cae49d74794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
-  DeathShader: {fileID: -6465566751694194690, guid: 50b65f3a6675fc548a523aa3ba340b05,
-    type: 3}
-  DefaultWeapon: {fileID: 11400000, guid: 8bb6a0c132f1b8a4a9e16eb961681baf, type: 2}
-  CharacterObject: {fileID: 22864012005401395, guid: da89d6445272e4d4a8760f881434d60d,
-    type: 3}
-  MoveSpeed: 50
 --- !u!114 &974895366712113765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,3 +101,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1da3333ee69744599cda61e528a93f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6558996179720491475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147752367711628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34942c0c92bb8ab43a792be49e44503f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}

@@ -28,9 +28,9 @@ public class GameStateManager : MonoBehaviour {
         }
 
         // Spawn the player character
-        GameObject playerCharacterInstance = Instantiate(playerCharacterContainer, spawnPoint, Quaternion.identity);
+        var playerCharacterInstance = Instantiate(playerCharacterContainer, spawnPoint, Quaternion.identity);
         playerCharacterInstance.name = "PlayerCharacter"; 
-        
+
         // Spawn the camera
         var playerCameraInstance = Instantiate(playerCamera);
         playerCameraInstance.name = "PlayerCamera";
@@ -38,6 +38,7 @@ public class GameStateManager : MonoBehaviour {
         // Update the gamestate
         Gamestate.player = playerCharacterInstance;
         Gamestate.currentHealth = playerCharacter.health;
+        Gamestate.playerCharacter = playerCharacter;
     }
 
     void OnDestroy() {

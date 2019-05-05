@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332c45b050bbba74dbab8abe3b026a21, type: 3}
   m_Name: Square
   m_EditorClassIdentifier: 
-  characterModel: {fileID: 0}
+  characterModel: {fileID: 4150302319993646409, guid: 202d8fea6dabebe46956069dc763b24b,
+    type: 3}
   defaultWeapon: {fileID: 0}
   health: 0
+  moveSpeed: 0
+  deathShader: {fileID: 0}

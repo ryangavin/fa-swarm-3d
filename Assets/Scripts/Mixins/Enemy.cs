@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// TODO refactor into a SimpleEnemyController or something
 public class Enemy : Character {
 
     private GameObject _target;
@@ -17,8 +18,8 @@ public class Enemy : Character {
     void Update() {
 
         // Move our position a step closer to the target.
-        float step = MoveSpeed * Time.deltaTime; // calculate distance to move
-        _targetPosition = Vector3.MoveTowards(transform.position, _target.transform.position, step);
+        //float step = MoveSpeed * Time.deltaTime; // calculate distance to move
+        //_targetPosition = Vector3.MoveTowards(transform.position, _target.transform.position, step);
     }
 
     void FixedUpdate() {

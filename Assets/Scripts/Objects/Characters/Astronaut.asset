@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332c45b050bbba74dbab8abe3b026a21, type: 3}
   m_Name: Astronaut
   m_EditorClassIdentifier: 
-  characterModel: {fileID: 0}
-  defaultWeapon: {fileID: 0}
-  health: 0
+  characterModel: {fileID: 22864012005401395, guid: da89d6445272e4d4a8760f881434d60d,
+    type: 3}
+  defaultWeapon: {fileID: 11400000, guid: 8bb6a0c132f1b8a4a9e16eb961681baf, type: 2}
+  health: 3
+  moveSpeed: 100
+  deathShader: {fileID: -6465566751694194690, guid: 50b65f3a6675fc548a523aa3ba340b05,
+    type: 3}
