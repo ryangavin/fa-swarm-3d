@@ -16,6 +16,6 @@ MonoBehaviour:
     type: 3}
   defaultWeapon: {fileID: 11400000, guid: 8bb6a0c132f1b8a4a9e16eb961681baf, type: 2}
   health: 3
-  moveSpeed: 100
+  moveSpeed: 70
   deathShader: {fileID: -6465566751694194690, guid: 50b65f3a6675fc548a523aa3ba340b05,
     type: 3}
