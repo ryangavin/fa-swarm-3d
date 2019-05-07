@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+// TODO Add filter
 public class DamagingProjectile : DamagingObject {
 
     protected override void AfterDamage(GameObject collision) {
-        //GameObject.Destroy(gameObject);
+        Destroy(gameObject);
     }
 
 }

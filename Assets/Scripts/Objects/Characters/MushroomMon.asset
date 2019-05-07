@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332c45b050bbba74dbab8abe3b026a21, type: 3}
+  m_Name: MushroomMon
+  m_EditorClassIdentifier: 
+  characterModel: {fileID: 5499513514095402979, guid: 291c98af6b3b10f48b7a367663259833,
+    type: 3}
+  defaultWeapon: {fileID: 0}
+  health: 1
+  moveSpeed: 10
+  deathShader: {fileID: -6465566751694194690, guid: 50b65f3a6675fc548a523aa3ba340b05,
+    type: 3}

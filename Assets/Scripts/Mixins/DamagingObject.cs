@@ -3,6 +3,8 @@
 /// <summary>
 /// Adds a damage component to a GameObject which applies DamagePerHit to any Damageable that collides with the GameObject.
 /// </summary>
+///
+/// TODO Add filter 
 public class DamagingObject : MonoBehaviour
 {
     // Start is called before the first frame update

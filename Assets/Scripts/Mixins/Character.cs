@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -18,11 +17,11 @@ using UnityEngine;
 /// - Any enemies
 /// - NPCs
 /// </summary>
-[RequireComponent(typeof(Damageable))]
+[RequireComponent(typeof(Damageable), typeof(Attractable))]
 public class Character : MonoBehaviour {
 
-    private CharacterScriptableObject _character;
-    private Animator _animator;
+    private CharacterData _characterData;
+    private CharacterModel _characterModel;
     private Rigidbody _rb;
 
     private GameObject _characterContainer;
@@ -43,34 +42,39 @@ public class Character : MonoBehaviour {
         EventBus.DeRegister<DamageEvent>(OnDamaged, null, gameObject);
     }
 
-    void Start() {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+    public static GameObject Spawn(CharacterData characterData, GameObject container, Vector3 position) {
+        var parentContainer = Instantiate(container);
+        parentContainer.name = "PlayerCharacter";
+        var characterScript = parentContainer.GetComponent<Character>();
+        characterScript._characterData = characterData;
         
-        // Get the player character data out of the gamestate
-        _character = GameStateManager.Instance.Gamestate.playerCharacter;
+        // Move the parent container to the spawn point
+        parentContainer.transform.position = position;
+        
+        // TODO reset everything probably
 
-        // Set up the character container and spawn the character object
-        _characterContainer = Instantiate(new GameObject(), parent: transform, position: transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
-        _characterContainer.name = "CharacterContainer";
-        GameObject characterObjectInstance = Instantiate(_character.characterModel, parent: _characterContainer.transform, position: _characterContainer.transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
-        characterObjectInstance.name = "Character";
+        // Set up the character container which holds all the game objects related to the character
+        characterScript._characterContainer = Instantiate(new GameObject(), parent: parentContainer.transform, position: parentContainer.transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
+        characterScript._characterContainer.name = "CharacterContainer";
+        
+        // Set up the character model and maintain the reference to the CharacterModel script
+        var characterModel = Instantiate(characterData.characterModel, parent: characterScript._characterContainer.transform, position: characterScript._characterContainer.transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
+        characterModel.name = "CharacterModel";
+        characterScript._characterModel = characterModel.GetComponent<CharacterModel>();
 
         // Change the weapon to the default weapon
-        ChangeWeapon(_character.defaultWeapon);
+        // This also creates the "Weapon" container inside the "CharacterContainer"
+        characterScript.ChangeWeapon(characterData.defaultWeapon);
 
-        // Get the rest of the compnoents that we might need
-        _animator = GetComponentInChildren<Animator>();
-        _rb = GetComponent<Rigidbody>();
+        // Get the rest of the components that we might need
+        characterScript._rb = parentContainer.GetComponent<Rigidbody>();
 
         // Find all the planets in the scene so we can decide which one we're standing on
-        _planetsInScene = new List<GameObject>(GameObject.FindGameObjectsWithTag("Planet"));
-        _currentPlanet = _planetsInScene[0];
+        // TODO probably don't do this per character
+        characterScript._planetsInScene = new List<GameObject>(GameObject.FindGameObjectsWithTag("Planet"));
+        characterScript._currentPlanet = characterScript._planetsInScene[0];
 
-        Debug.DrawRay(transform.position, transform.forward*100, Color.red);
-        Debug.DrawRay(transform.position, _characterContainer.transform.forward*100, Color.green);
-
-
+        return parentContainer;
     }
 
     public void ChangeWeapon(Weapon weapon) {
@@ -86,7 +90,7 @@ public class Character : MonoBehaviour {
         _weaponSlot.name = "Weapon";
 
         // Update the current weapon data
-        this._currentWeapon = weapon;
+        _currentWeapon = weapon;
     }
 
 
@@ -94,11 +98,11 @@ public class Character : MonoBehaviour {
         // Set the target position so the player is correctly moved when the physics engine ticks
         // Note the Time.deltaTime call which returns the time since call to Update(). This ensures our players movement is adjusted for the irregular intervals of the Update() call.
         if (moveDirection != Vector3.zero) {
-            _rb.MovePosition(transform.position + _character.moveSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
+            _rb.MovePosition(transform.position + _characterData.moveSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
         }
 
         // Update the animator
-        _animator.SetBool("Moving", moveDirection != Vector3.zero);
+        _characterModel.animator.SetBool("Moving", moveDirection != Vector3.zero);
     }
 
     public void Rotate(float localAngle) {
@@ -112,9 +116,7 @@ public class Character : MonoBehaviour {
         GameObject projectileInstance = Instantiate(_currentWeapon.ProjectileObject, projectileSpawnPosition, _characterContainer.transform.rotation);
 
         // Modify the values of the OrbitalProjectile component
-        // TODO is there a better way to get access to components when we know they will be there
         // Perhaps this would be more efficient with a factory
-        // Perhaps it would be better to manually add the OrbitalProjectile mixin via a prepopulated component
         OrbitalProjectile orbitalProjectile = projectileInstance.GetComponent<OrbitalProjectile>();
         orbitalProjectile.Target = _currentPlanet;
         orbitalProjectile.Axis = _characterContainer.transform.right;    // Orbit around the players right axis -> shoot from the front and orbit the target using the player's forward as the origin.
@@ -124,7 +126,7 @@ public class Character : MonoBehaviour {
     }
 
 
-    protected virtual void OnDamaged(object eventArgs) {
+    private void OnDamaged(object eventArgs) {
         // Ignore any damage events that might come in while the character is dead and still in the game world
         if (_alive == false) {
             return;
@@ -142,7 +144,7 @@ public class Character : MonoBehaviour {
         EventBus.Publish(new CharacterHealthChangeEvent(gameObject, gameObject, previousHealth, _currentHealth));
     }
 
-    protected virtual void OnDeath() {
+     private void OnDeath() {
         _alive = false;
 
         // Turn off the collider
@@ -150,13 +152,13 @@ public class Character : MonoBehaviour {
 
         // Find the renderers associated with this object and change their shaders to the death shader
         List<Renderer> renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
-        foreach (Renderer renderer in renderers) {
-            renderer.material.shader = _character.deathShader;
-            renderer.material.SetFloat("_StartTime", Time.timeSinceLevelLoad);
+        foreach (Renderer r in renderers) {
+            r.material.shader = _characterData.deathShader;
+            r.material.SetFloat("_StartTime", Time.timeSinceLevelLoad);
         }
 
-        // Destroy the object 2 seconds later
-        GameObject.Destroy(gameObject, .8f);
+        // Destroy the object later
+        Destroy(gameObject, .8f);
 
         // TODO publish an on death event
         // Perhaps move to OnDamaged so no one can opt out of publishing the event by overriding OnDeath()

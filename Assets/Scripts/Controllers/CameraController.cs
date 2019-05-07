@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
     private GameObject _target;
 
     private void Start() {
-        _target = GameStateManager.Instance.Gamestate.player;
+        _target = GameStateManager.Instance.gamestate.player;
     }
 
     // Update is called once per frame

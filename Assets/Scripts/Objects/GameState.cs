@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // TODO change package protection in such a way where only the GameStateController can see the members.
 // TODO everyone else uses getters
@@ -8,7 +6,6 @@ using UnityEngine;
 public class GameState : ScriptableObject {
 
     public GameObject player;
-    public CharacterScriptableObject playerCharacter;
     public int score = 0;
     public int currentHealth;
 }

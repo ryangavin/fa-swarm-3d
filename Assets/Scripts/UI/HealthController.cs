@@ -11,9 +11,9 @@ public class HealthController : MonoBehaviour {
 
     private void Start() {
         _transform = transform;
-        _target = GameStateManager.Instance.Gamestate.player;
+        _target = GameStateManager.Instance.gamestate.player;
         EventBus.Register<CharacterHealthChangeEvent>(OnCharacterHealthChange, target: _target);
-        DrawHealth(GameStateManager.Instance.Gamestate.currentHealth);    
+        DrawHealth(GameStateManager.Instance.gamestate.currentHealth);    
     }
 
     private void OnCharacterHealthChange(object args) {

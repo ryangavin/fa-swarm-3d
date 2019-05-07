@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332c45b050bbba74dbab8abe3b026a21, type: 3}
   m_Name: Astronaut
   m_EditorClassIdentifier: 
-  characterModel: {fileID: 22864012005401395, guid: da89d6445272e4d4a8760f881434d60d,
+  characterModel: {fileID: 5538512143919223962, guid: c5243652672c25a43968614ba518cab6,
     type: 3}
   defaultWeapon: {fileID: 11400000, guid: 8bb6a0c132f1b8a4a9e16eb961681baf, type: 2}
   health: 3

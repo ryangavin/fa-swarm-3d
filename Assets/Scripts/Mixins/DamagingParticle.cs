@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 /// Assigns a damage value to a particle system which will be applied on collision to any Damageables.
 /// </summary>
 /// <see cref="Damageable"/>
+///
+/// TODO Add filter
 public class DamagingParticle : MonoBehaviour {
 
     public int DamagePerHit = 1;
