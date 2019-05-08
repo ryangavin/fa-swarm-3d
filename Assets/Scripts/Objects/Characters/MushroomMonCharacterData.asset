@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332c45b050bbba74dbab8abe3b026a21, type: 3}
-  m_Name: Astronaut
+  m_Name: MushroomMonCharacterData
   m_EditorClassIdentifier: 
-  characterModel: {fileID: 5538512143919223962, guid: c5243652672c25a43968614ba518cab6,
+  characterModel: {fileID: 5499513514095402979, guid: 291c98af6b3b10f48b7a367663259833,
     type: 3}
-  defaultWeapon: {fileID: 11400000, guid: 8bb6a0c132f1b8a4a9e16eb961681baf, type: 2}
-  health: 3
-  moveSpeed: 70
+  defaultWeapon: {fileID: 0}
+  health: 1
+  moveSpeed: 5
   deathShader: {fileID: -6465566751694194690, guid: 50b65f3a6675fc548a523aa3ba340b05,
     type: 3}

@@ -17,16 +17,18 @@ using UnityEngine;
 /// - Any enemies
 /// - NPCs
 /// </summary>
-[RequireComponent(typeof(Damageable), typeof(Attractable))]
+[RequireComponent(typeof(Damageable), typeof(Attractable), typeof(BoxCollider))]
 public class Character : MonoBehaviour {
 
     private CharacterData _characterData;
     private CharacterModel _characterModel;
     private Rigidbody _rb;
-
     private GameObject _characterContainer;
+    private BoxCollider _boxCollider;
+    
     private GameObject _currentPlanet;
     private List<GameObject> _planetsInScene;    // TODO this needs to move out into a shared registry
+    
     private bool _alive = true;
     private Weapon _currentWeapon;
     private GameObject _weaponSlot;
@@ -34,11 +36,11 @@ public class Character : MonoBehaviour {
 
 
     // Register listeners
-    void OnEnable() {
+    private void OnEnable() {
         EventBus.Register<DamageEvent>(OnDamaged, null, gameObject);
     }
 
-    void OnDisable() {
+    private void OnDisable() {
         EventBus.DeRegister<DamageEvent>(OnDamaged, null, gameObject);
     }
 
@@ -68,6 +70,16 @@ public class Character : MonoBehaviour {
 
         // Get the rest of the components that we might need
         characterScript._rb = parentContainer.GetComponent<Rigidbody>();
+        characterScript._boxCollider = parentContainer.GetComponent<BoxCollider>();
+
+        // Update the size of the box collider so it encapsulates the character model
+        foreach (var renderer in characterModel.GetComponentsInChildren<Renderer>()) {
+            if (!renderer.gameObject.CompareTag(Tags.CharacterModel)) continue;
+            var bounds = renderer.bounds;
+            characterScript._boxCollider.center = bounds.center - parentContainer.transform.position;
+            characterScript._boxCollider.size = bounds.size;
+            break;
+        }
 
         // Find all the planets in the scene so we can decide which one we're standing on
         // TODO probably don't do this per character
@@ -78,9 +90,12 @@ public class Character : MonoBehaviour {
     }
 
     public void ChangeWeapon(Weapon weapon) {
+        if (!weapon) {
+            return;
+        }
 
         // Destroy the existing physical weapon
-        if (_weaponSlot != null) {
+        if (_weaponSlot) {
             Destroy(_weaponSlot);
         }
 

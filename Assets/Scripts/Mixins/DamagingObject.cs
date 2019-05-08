@@ -8,21 +8,22 @@
 public class DamagingObject : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int DamagePerHit = 1;
+    public int damagePerHit = 1;
 
     void OnCollisionEnter(Collision collision) {
-        // Make sure we only publish events if the collision is with a Damageable. 
-        Damageable damageable = collision.gameObject.GetComponent<Damageable>();
-        if (damageable != null) {
-            damageable.Damage(gameObject, DamagePerHit);
-
-            // Call the callback so any super classes can add functionality
-            AfterDamage(collision.gameObject);
+        // Check if the collision target is a damagable or a child of a damagable
+        var damageable = collision.gameObject.GetComponentInParent<Damageable>();
+        if (damageable == null) {
+            return;
         }
+        
+        // Apply the damage
+        damageable.Damage(gameObject, damagePerHit);
+
+        // Call the callback so any super classes can add functionality
+        AfterDamage(collision.gameObject);
     }
-
     
-
     protected virtual void BeforeDamage(GameObject collision) { }
 
     protected virtual void AfterDamage(GameObject collision) { }

@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e586fd0350088e41a2591e00e0fa6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHeight: 3
-  cameraDistance: 1
+  cameraHeight: 6
+  cameraDistance: 4
 --- !u!114 &7304431876488671332
 MonoBehaviour:
   m_ObjectHideFlags: 0
