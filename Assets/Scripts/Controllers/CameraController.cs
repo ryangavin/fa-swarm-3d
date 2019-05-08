@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
@@ -9,7 +8,7 @@ public class CameraController : MonoBehaviour {
     private GameObject _target;
 
     private void Start() {
-        _target = GameStateManager.Instance.gamestate.player;
+        _target = GameStateManager.Instance.gamestate.playerGameObject;
     }
 
     // Update is called once per frame

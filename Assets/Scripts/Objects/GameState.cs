@@ -5,7 +5,7 @@
 // TODO Basically only the GameStateController should be able to update the GameState
 public class GameState : ScriptableObject {
 
-    public GameObject player;
-    public int score = 0;
-    public int currentHealth;
+    public GameObject playerGameObject;
+    public Character playerCharacter;
+    public int score;
 }

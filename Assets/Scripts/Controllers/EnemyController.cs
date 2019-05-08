@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour {
     private void Start() {
 
         // Find the player when instantiated
-        _target = GameStateManager.Instance.gamestate.player;
+        _target = GameStateManager.Instance.gamestate.playerGameObject;
         
         // Get the character component
         _character = GetComponent<Character>();
@@ -20,7 +20,10 @@ public class EnemyController : MonoBehaviour {
     void Update() {
         // Find the direction of the player and tell the character component to move that way
         var playerDirection = _target.transform.position - transform.position;
+        playerDirection.y = 0;
         playerDirection = playerDirection.normalized;
         _character.MoveDirection(playerDirection);
+        _character.Rotate(Mathf.Atan2(playerDirection.x, playerDirection.z) * Mathf.Rad2Deg);
+
     }
 }

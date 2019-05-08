@@ -37,8 +37,8 @@ public class GameStateManager : MonoBehaviour {
         playerCameraInstance.name = "PlayerCamera";
         
         // Update the gamestate
-        gamestate.player = playerCharacterInstance;
-        gamestate.currentHealth = playerCharacter.health;
+        gamestate.playerGameObject = playerCharacterInstance;
+        gamestate.playerCharacter = playerCharacterInstance.GetComponent<Character>();
     }
 
     private void OnDestroy() {
@@ -47,13 +47,10 @@ public class GameStateManager : MonoBehaviour {
 
     private void OnEnable() {
         EventBus.Register<DamageEvent>(OnDamage, global: true);
-        EventBus.Register<CharacterHealthChangeEvent>(OnPlayerHealthChange, target: gamestate.player);
     }
 
     private void OnDisable() {
         EventBus.DeRegister<DamageEvent>(OnDamage);
-        EventBus.DeRegister<CharacterHealthChangeEvent>(OnPlayerHealthChange, target: gamestate.player);
-
     }
 
     private void OnDamage(object eventArgs) { 
@@ -67,10 +64,5 @@ public class GameStateManager : MonoBehaviour {
             EventBus.Publish(new ScoreChangeEvent(gameObject, gamestate.score - previousScore, gamestate.score));
         }
 
-    }
-
-    private void OnPlayerHealthChange(object args) {
-        CharacterHealthChangeEvent eventArgs = (CharacterHealthChangeEvent)args;
-        gamestate.currentHealth = eventArgs.currentHealth;
     }
 }

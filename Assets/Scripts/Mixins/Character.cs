@@ -31,10 +31,12 @@ public class Character : MonoBehaviour {
     private GameObject _currentPlanet;
     private List<GameObject> _planetsInScene;    // TODO this needs to move out into a shared registry
     
-    private bool _alive = true;
     private Weapon _currentWeapon;
     private GameObject _weaponSlot;
-    private int _currentHealth;
+    
+    public int CurrentHealth { private set; get; }
+    public bool Alive { private set; get; }
+
 
 
     // Register listeners
@@ -54,8 +56,11 @@ public class Character : MonoBehaviour {
         // Move the parent container to the spawn point
         parentContainer.transform.position = position;
         
-        // TODO reset everything probably
-
+        // Reset some stuff
+        // TODO evaluate this
+        characterScript.CurrentHealth = characterData.health;
+        characterScript.Alive = true;
+        
         // Set up the model container which holds all the game objects related to rendering the character and weapon models
         characterScript._modelContainer = new GameObject("ModelContainer");
         characterScript._modelContainer.transform.parent = parentContainer.transform;
@@ -102,7 +107,7 @@ public class Character : MonoBehaviour {
         }
 
         // Create the game object that physically represents the weapon
-        Vector3 weaponSlotOffset = _modelContainer.transform.TransformPoint(new Vector3(.05f, .1f, .01f));
+        var weaponSlotOffset = _modelContainer.transform.TransformPoint(new Vector3(.05f, .1f, .01f));
         _weaponSlot = Instantiate(weapon.WeaponObject, parent: _modelContainer.transform, position: weaponSlotOffset, rotation: Quaternion.identity);
         _weaponSlot.name = "WeaponModel";
 
@@ -129,12 +134,12 @@ public class Character : MonoBehaviour {
     public void UseWeapon() {
 
         // Spawn the projectile
-        Vector3 projectileSpawnPosition = _modelContainer.transform.TransformPoint(new Vector3(0, .2f, .3f));
-        GameObject projectileInstance = Instantiate(_currentWeapon.ProjectileObject, projectileSpawnPosition, _modelContainer.transform.rotation);
+        var projectileSpawnPosition = _modelContainer.transform.TransformPoint(new Vector3(0, .2f, .3f));
+        var projectileInstance = Instantiate(_currentWeapon.ProjectileObject, projectileSpawnPosition, _modelContainer.transform.rotation);
 
         // Modify the values of the OrbitalProjectile component
         // Perhaps this would be more efficient with a factory
-        OrbitalProjectile orbitalProjectile = projectileInstance.GetComponent<OrbitalProjectile>();
+        var orbitalProjectile = projectileInstance.GetComponent<OrbitalProjectile>();
         orbitalProjectile.Target = _currentPlanet;
         orbitalProjectile.Axis = _modelContainer.transform.right;    // Orbit around the players right axis -> shoot from the front and orbit the target using the player's forward as the origin.
         orbitalProjectile.Lifetime = _currentWeapon.Lifetime;
@@ -146,31 +151,32 @@ public class Character : MonoBehaviour {
 
     private void OnDamaged(object eventArgs) {
         // Ignore any damage events that might come in while the character is dead and still in the game world
-        if (_alive == false) {
+        if (Alive == false) {
             return;
         }
 
         var damageEvent = (DamageEvent)eventArgs;
-        var previousHealth = _currentHealth;
-        _currentHealth -= damageEvent.Damage;
-        if (_currentHealth <= 0) {
-            _alive = false;
+        var previousHealth = CurrentHealth;
+        CurrentHealth -= damageEvent.Damage;
+        if (CurrentHealth <= 0) {
+            Alive = false;
             OnDeath();
         }
 
         // Let the world know that this character's health changed
-        EventBus.Publish(new CharacterHealthChangeEvent(gameObject, gameObject, previousHealth, _currentHealth));
+        var g = gameObject;
+        EventBus.Publish(new CharacterHealthChangeEvent(g, g, previousHealth, CurrentHealth));
     }
 
      private void OnDeath() {
-        _alive = false;
+        Alive = false;
 
         // Turn off the collider
         GetComponent<Collider>().enabled = false;
 
         // Find the renderers associated with this object and change their shaders to the death shader
-        List<Renderer> renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
-        foreach (Renderer r in renderers) {
+        var renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
+        foreach (var r in renderers) {
             r.material.shader = _characterData.deathShader;
             r.material.SetFloat("_StartTime", Time.timeSinceLevelLoad);
         }
