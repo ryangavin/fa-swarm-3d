@@ -20,6 +20,8 @@ using UnityEngine;
 [RequireComponent(typeof(Damageable), typeof(Attractable), typeof(BoxCollider))]
 public class Character : MonoBehaviour {
 
+    private static readonly int AnimatorMoving = Animator.StringToHash("Moving");
+
     private CharacterData _characterData;
     private CharacterModel _characterModel;
     private Rigidbody _rb;
@@ -117,7 +119,7 @@ public class Character : MonoBehaviour {
         }
 
         // Update the animator
-        _characterModel.animator.SetBool("Moving", moveDirection != Vector3.zero);
+        _characterModel.animator.SetBool(AnimatorMoving, moveDirection != Vector3.zero);
     }
 
     public void Rotate(float localAngle) {
@@ -137,6 +139,7 @@ public class Character : MonoBehaviour {
         orbitalProjectile.Axis = _characterContainer.transform.right;    // Orbit around the players right axis -> shoot from the front and orbit the target using the player's forward as the origin.
         orbitalProjectile.Lifetime = _currentWeapon.Lifetime;
         orbitalProjectile.ProjectileVelocity = _currentWeapon.ProjectileVelocity;
+        orbitalProjectile.ImpactFoce = _currentWeapon.ImpactVeloctiy;
 
     }
 

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: LaserGun
   m_EditorClassIdentifier: 
   ProjectileVelocity: 80
-  ImpactVeloctiy: 400
+  ImpactVeloctiy: 20
   FireRate: 6
+  Lifetime: 2
   ProjectileObject: {fileID: 8893923812074707501, guid: 87011170c2162a447a04fea2551ee2bc,
     type: 3}
   WeaponObject: {fileID: 138408, guid: a66d64962dad7b441b895147b3616981, type: 3}
