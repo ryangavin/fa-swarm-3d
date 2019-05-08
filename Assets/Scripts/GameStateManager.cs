@@ -30,6 +30,7 @@ public class GameStateManager : MonoBehaviour {
         // Spawn the player character
         // TODO move this into the Spawn method and make spawn static
         var playerCharacterInstance = Character.Spawn(playerCharacter, playerCharacterContainer, spawnPoint);
+        playerCharacterInstance.name = "PlayerCharacter";
 
         // Spawn the camera
         var playerCameraInstance = Instantiate(playerCamera);

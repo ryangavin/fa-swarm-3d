@@ -25,7 +25,7 @@ public class Character : MonoBehaviour {
     private CharacterData _characterData;
     private CharacterModel _characterModel;
     private Rigidbody _rb;
-    private GameObject _characterContainer;
+    private GameObject _modelContainer;
     private BoxCollider _boxCollider;
     
     private GameObject _currentPlanet;
@@ -48,7 +48,6 @@ public class Character : MonoBehaviour {
 
     public static GameObject Spawn(CharacterData characterData, GameObject container, Vector3 position) {
         var parentContainer = Instantiate(container);
-        parentContainer.name = "PlayerCharacter";
         var characterScript = parentContainer.GetComponent<Character>();
         characterScript._characterData = characterData;
         
@@ -57,12 +56,13 @@ public class Character : MonoBehaviour {
         
         // TODO reset everything probably
 
-        // Set up the character container which holds all the game objects related to the character
-        characterScript._characterContainer = Instantiate(new GameObject(), parent: parentContainer.transform, position: parentContainer.transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
-        characterScript._characterContainer.name = "CharacterContainer";
-        
+        // Set up the model container which holds all the game objects related to rendering the character and weapon models
+        characterScript._modelContainer = new GameObject("ModelContainer");
+        characterScript._modelContainer.transform.parent = parentContainer.transform;
+        characterScript._modelContainer.transform.position = parentContainer.transform.TransformPoint(Vector3.zero);
+
         // Set up the character model and maintain the reference to the CharacterModel script
-        var characterModel = Instantiate(characterData.characterModel, parent: characterScript._characterContainer.transform, position: characterScript._characterContainer.transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
+        var characterModel = Instantiate(characterData.characterModel, parent: characterScript._modelContainer.transform, position: characterScript._modelContainer.transform.TransformPoint(Vector3.zero), rotation: Quaternion.identity);
         characterModel.name = "CharacterModel";
         characterScript._characterModel = characterModel.GetComponent<CharacterModel>();
 
@@ -102,9 +102,9 @@ public class Character : MonoBehaviour {
         }
 
         // Create the game object that physically represents the weapon
-        Vector3 weaponSlotOffset = _characterContainer.transform.TransformPoint(new Vector3(.05f, .1f, .01f));
-        _weaponSlot = Instantiate(weapon.WeaponObject, parent: _characterContainer.transform, position: weaponSlotOffset, rotation: Quaternion.identity);
-        _weaponSlot.name = "Weapon";
+        Vector3 weaponSlotOffset = _modelContainer.transform.TransformPoint(new Vector3(.05f, .1f, .01f));
+        _weaponSlot = Instantiate(weapon.WeaponObject, parent: _modelContainer.transform, position: weaponSlotOffset, rotation: Quaternion.identity);
+        _weaponSlot.name = "WeaponModel";
 
         // Update the current weapon data
         _currentWeapon = weapon;
@@ -123,20 +123,20 @@ public class Character : MonoBehaviour {
     }
 
     public void Rotate(float localAngle) {
-        _characterContainer.transform.localRotation = Quaternion.Euler(0, localAngle, 0);
+        _modelContainer.transform.localRotation = Quaternion.Euler(0, localAngle, 0);
     }
 
     public void UseWeapon() {
 
         // Spawn the projectile
-        Vector3 projectileSpawnPosition = _characterContainer.transform.TransformPoint(new Vector3(0, .2f, .3f));
-        GameObject projectileInstance = Instantiate(_currentWeapon.ProjectileObject, projectileSpawnPosition, _characterContainer.transform.rotation);
+        Vector3 projectileSpawnPosition = _modelContainer.transform.TransformPoint(new Vector3(0, .2f, .3f));
+        GameObject projectileInstance = Instantiate(_currentWeapon.ProjectileObject, projectileSpawnPosition, _modelContainer.transform.rotation);
 
         // Modify the values of the OrbitalProjectile component
         // Perhaps this would be more efficient with a factory
         OrbitalProjectile orbitalProjectile = projectileInstance.GetComponent<OrbitalProjectile>();
         orbitalProjectile.Target = _currentPlanet;
-        orbitalProjectile.Axis = _characterContainer.transform.right;    // Orbit around the players right axis -> shoot from the front and orbit the target using the player's forward as the origin.
+        orbitalProjectile.Axis = _modelContainer.transform.right;    // Orbit around the players right axis -> shoot from the front and orbit the target using the player's forward as the origin.
         orbitalProjectile.Lifetime = _currentWeapon.Lifetime;
         orbitalProjectile.ProjectileVelocity = _currentWeapon.ProjectileVelocity;
         orbitalProjectile.ImpactFoce = _currentWeapon.ImpactVeloctiy;

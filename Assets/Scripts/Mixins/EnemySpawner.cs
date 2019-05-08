@@ -6,12 +6,13 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject characterContainer;
     public float delay = 2000f;
 
-    private float _timeSinceLastSpawn = 0f;
+    private float _timeSinceLastSpawn;
+    private float _numSpawns;
 
     private void Update() {
         if (_timeSinceLastSpawn > delay) {
-            Debug.Log("Spawning");
-            Character.Spawn(enemy, characterContainer, transform.position);
+            var enemyInstance = Character.Spawn(enemy, characterContainer, transform.position);
+            enemyInstance.name = "Enemy "+_numSpawns++;
             _timeSinceLastSpawn = 0;
         }
         else {
