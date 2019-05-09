@@ -47,22 +47,28 @@ public class GameStateManager : MonoBehaviour {
 
     private void OnEnable() {
         EventBus.Register<DamageEvent>(OnDamage, global: true);
+        EventBus.Register<DeathEvent>(OnPlayerDeath, target: gamestate.playerGameObject);
     }
 
     private void OnDisable() {
         EventBus.DeRegister<DamageEvent>(OnDamage);
+        EventBus.DeRegister<DeathEvent>(OnPlayerDeath, target: gamestate.playerGameObject);
     }
 
     private void OnDamage(object eventArgs) { 
-        DamageEvent damageEvent = (DamageEvent)eventArgs;
+        var damageEvent = (DamageEvent)eventArgs;
 
         // Record the score if the source was not an enemey (eg player)
         // TODO refactor this condition
-        if (damageEvent.source.GetComponent<EnemyController>() == null) {
-            var previousScore = gamestate.score;
-            gamestate.score += damageEvent.Damage;
-            EventBus.Publish(new ScoreChangeEvent(gameObject, gamestate.score - previousScore, gamestate.score));
-        }
+        if (damageEvent.source.GetComponent<EnemyController>() != null) return;
+        var previousScore = gamestate.score;
+        gamestate.score += damageEvent.Damage;
+        EventBus.Publish(new ScoreChangeEvent(gameObject, gamestate.score - previousScore, gamestate.score));
 
+    }
+
+    private void OnPlayerDeath(object eventArgs) {
+        Debug.Log("Game Over");
+        EventBus.Publish(new GameOverEvent(gameObject, null));
     }
 }

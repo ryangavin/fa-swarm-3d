@@ -159,7 +159,6 @@ public class Character : MonoBehaviour {
         var previousHealth = CurrentHealth;
         CurrentHealth -= damageEvent.Damage;
         if (CurrentHealth <= 0) {
-            Alive = false;
             OnDeath();
         }
 
@@ -168,7 +167,8 @@ public class Character : MonoBehaviour {
         EventBus.Publish(new CharacterHealthChangeEvent(g, g, previousHealth, CurrentHealth));
     }
 
-     private void OnDeath() {
+    private void OnDeath() {
+        // Mark this character as not alive
         Alive = false;
 
         // Turn off the collider
@@ -183,8 +183,9 @@ public class Character : MonoBehaviour {
 
         // Destroy the object later
         Destroy(gameObject, .8f);
-
-        // TODO publish an on death event
-        // Perhaps move to OnDamaged so no one can opt out of publishing the event by overriding OnDeath()
+        
+        // TODO Perhaps move to OnDamaged so no one can opt out of publishing the event by overriding OnDeath()
+        var g = gameObject;
+        EventBus.Publish(new DeathEvent(g, g));
     }
 }
