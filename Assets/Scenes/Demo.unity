@@ -608,47 +608,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2606730587778687060, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2606730587778687061, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2606730587928083007, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_margin.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6554220674207030686, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6554220674207030686, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6554220674207030686, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 190.00003
-      objectReference: {fileID: 0}
-    - target: {fileID: 6554220674207030686, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6374767599352996808, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd,
-        type: 3}
-      propertyPath: HealthIcon
-      value: 
-      objectReference: {fileID: 5231319120496165223, guid: 2ac8e4324d823484cb428f1aa6eeabee,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bc7d2627aff92b48bd90ec0fb1a68cd, type: 3}
 --- !u!1001 &6419278205631902316

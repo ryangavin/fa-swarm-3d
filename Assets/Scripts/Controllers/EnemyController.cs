@@ -18,12 +18,14 @@ public class EnemyController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (!_target || GameStateManager.Instance.gamestate.gameOver) {
+            return;
+        }
         // Find the direction of the player and tell the character component to move that way
         var playerDirection = _target.transform.position - transform.position;
         playerDirection.y = 0;
         playerDirection = playerDirection.normalized;
         _character.MoveDirection(playerDirection);
         _character.Rotate(Mathf.Atan2(playerDirection.x, playerDirection.z) * Mathf.Rad2Deg);
-
     }
 }

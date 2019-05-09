@@ -66,6 +66,7 @@ public static class EventBus {
     }
 
     // Publish an event
+    // TODO process this in a thread pool
     public static void Publish<T>(T publishedEvent) where T : Event {
         if (publishedEvent.source != null) {
             Tuple<GameObject, Type> key = new Tuple<GameObject, Type>(publishedEvent.source, typeof(T));

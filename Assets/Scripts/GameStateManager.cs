@@ -9,14 +9,13 @@ public class GameStateManager : MonoBehaviour {
     public CharacterData playerCharacter;
     public Vector3 spawnPoint;    // TODO move this to some level data object
 
+    // TODO refactor this so the Instance is hidden and only the gamestate is exposed
     public static GameStateManager Instance { get; private set; }
 
     public GameState gamestate { get; private set; }
 
     private void Awake() {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        
+        // Set up the singleton
         if (Instance == null) {
             Instance = this;
             gamestate = ScriptableObject.CreateInstance<GameState>();
@@ -26,9 +25,12 @@ public class GameStateManager : MonoBehaviour {
             Debug.LogWarning("There is more than one GameStateManager in the scene");
             Destroy(gameObject);
         }
+        
+        // Configure the cursor
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
 
         // Spawn the player character
-        // TODO move this into the Spawn method and make spawn static
         var playerCharacterInstance = Character.Spawn(playerCharacter, playerCharacterContainer, spawnPoint);
         playerCharacterInstance.name = "PlayerCharacter";
 
@@ -37,6 +39,7 @@ public class GameStateManager : MonoBehaviour {
         playerCameraInstance.name = "PlayerCamera";
         
         // Update the gamestate
+        gamestate.gameOver = false;
         gamestate.playerGameObject = playerCharacterInstance;
         gamestate.playerCharacter = playerCharacterInstance.GetComponent<Character>();
     }
@@ -68,7 +71,7 @@ public class GameStateManager : MonoBehaviour {
     }
 
     private void OnPlayerDeath(object eventArgs) {
-        Debug.Log("Game Over");
+        gamestate.gameOver = true;
         EventBus.Publish(new GameOverEvent(gameObject, null));
     }
 }

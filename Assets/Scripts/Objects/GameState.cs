@@ -8,4 +8,5 @@ public class GameState : ScriptableObject {
     public GameObject playerGameObject;
     public Character playerCharacter;
     public int score;
+    public bool gameOver = false;
 }
