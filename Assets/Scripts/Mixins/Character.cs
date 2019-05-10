@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -36,8 +37,6 @@ public class Character : MonoBehaviour {
     
     public int CurrentHealth { private set; get; }
     public bool Alive { private set; get; }
-
-
 
     // Register listeners
     private void OnEnable() {
@@ -88,10 +87,12 @@ public class Character : MonoBehaviour {
             break;
         }
 
-        // Find all the planets in the scene so we can decide which one we're standing on
-        // TODO probably don't do this per character
-        characterScript._planetsInScene = new List<GameObject>(GameObject.FindGameObjectsWithTag("Planet"));
-        characterScript._currentPlanet = characterScript._planetsInScene[0];
+        // Update the current planet of the character
+        // TODO Handle more than one planet in the scene
+        // TODO Probably set the planet to the nearest planet based on the spawn point
+        if (PlanetManager.Instance && PlanetManager.Instance.PlanetsInScene.Count > 0) {
+            characterScript._currentPlanet = PlanetManager.Instance.PlanetsInScene[0];
+        }
 
         return parentContainer;
     }
@@ -168,6 +169,7 @@ public class Character : MonoBehaviour {
     }
 
     private void OnDeath() {
+        Debug.Log("Character OnDeath()");
         // Mark this character as not alive
         Alive = false;
 

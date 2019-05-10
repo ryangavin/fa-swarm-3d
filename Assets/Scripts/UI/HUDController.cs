@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(Persistable))]
 public class HUDController : MonoBehaviour {
 
     private Animator _animator;
    
     private static readonly int AnimatorGameOver = Animator.StringToHash("GameOver");
-    
+
+    private void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start() {
         _animator = GetComponent<Animator>();
     }

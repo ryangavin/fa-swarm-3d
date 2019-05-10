@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OrbitalProjectile : MonoBehaviour {
 
@@ -13,7 +11,7 @@ public class OrbitalProjectile : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Lifetime < 0) {
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
 
@@ -29,7 +27,7 @@ public class OrbitalProjectile : MonoBehaviour {
 
             // TODO add some callback so other things can do stuff
 
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

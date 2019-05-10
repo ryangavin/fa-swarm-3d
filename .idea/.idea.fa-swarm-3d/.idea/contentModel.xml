@@ -67,9 +67,14 @@
             <e p="Event.cs" t="Include" />
             <e p="EventBus.cs" t="Include" />
             <e p="GameOverEvent.cs" t="Include" />
+            <e p="LevelStartEvent.cs" t="Include" />
+            <e p="PlayerSpawnEvent.cs" t="Include" />
             <e p="ScoreChangeEvent.cs" t="Include" />
           </e>
-          <e p="GameStateManager.cs" t="Include" />
+          <e p="Managers" t="Include">
+            <e p="GameStateManager.cs" t="Include" />
+            <e p="PlanetManager.cs" t="Include" />
+          </e>
           <e p="Mixins" t="Include">
             <e p="Attractable.cs" t="Include" />
             <e p="Attractor.cs" t="Include" />
@@ -82,12 +87,19 @@
             <e p="DamagingProjectile.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
             <e p="OrbitalProjectile.cs" t="Include" />
+            <e p="Persistable.cs" t="Include" />
           </e>
           <e p="Objects" t="Include">
             <e p="Characters" t="Include">
               <e p="CharacterData.cs" t="Include" />
             </e>
+            <e p="GameModes" t="Include">
+              <e p="GameModeData.cs" t="Include" />
+            </e>
             <e p="GameState.cs" t="Include" />
+            <e p="Levels" t="Include">
+              <e p="LevelData.cs" t="Include" />
+            </e>
             <e p="Weapons" t="Include">
               <e p="Weapon.cs" t="Include" />
             </e>

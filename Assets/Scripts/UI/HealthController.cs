@@ -5,19 +5,33 @@ public class HealthController : MonoBehaviour {
     private GameObject _target;
     private Transform _transform;
 
+    private void OnEnable() {
+        EventBus.Register<PlayerSpawnEvent>(OnPlayerSpawn, global: true);
+    }
+
     private void OnDisable() {
         EventBus.DeRegister<CharacterHealthChangeEvent>(OnCharacterHealthChange, target: _target);
+        EventBus.DeRegister<PlayerSpawnEvent>(OnPlayerSpawn);
     }
 
     private void Start() {
         _transform = transform;
-        _target = GameStateManager.Instance.gamestate.playerGameObject;
+    }
+
+    private void OnPlayerSpawn(object eventArgs) {
+        var playerSpawnEvent = (PlayerSpawnEvent) eventArgs;
+        
+        if (!_target) {
+            EventBus.DeRegister<CharacterHealthChangeEvent>(OnCharacterHealthChange, target: _target);
+        }
+        _target = playerSpawnEvent.target;
+        
         EventBus.Register<CharacterHealthChangeEvent>(OnCharacterHealthChange, target: _target);
-        DrawHealth(GameStateManager.Instance.gamestate.playerCharacter.CurrentHealth);    
+        DrawHealth(GameStateManager.Instance.gamestate.playerCharacter.CurrentHealth);
     }
 
     private void OnCharacterHealthChange(object args) {
-        CharacterHealthChangeEvent eventArgs = (CharacterHealthChangeEvent) args;
+        var eventArgs = (CharacterHealthChangeEvent) args;
         DrawHealth(eventArgs.currentHealth);
     }
 
@@ -26,7 +40,7 @@ public class HealthController : MonoBehaviour {
             Destroy(child.gameObject);
         }
 
-        for (int i = 0; i < health; i ++) {
+        for (var i = 0; i < health; i ++) {
             var healthIconObject = Instantiate(healthIcon, parent: _transform, position: _transform.position + new Vector3(-20 + (-60 * i), 0), rotation: Quaternion.identity);
             healthIconObject.name = "HealthIcon" + i;
         }
