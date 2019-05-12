@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour {
 
     public float cameraHeight;
     public float cameraDistance;
-    
+
     private GameObject _target;
 
     private void Start() {

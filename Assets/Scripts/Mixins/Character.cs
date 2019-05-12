@@ -34,6 +34,8 @@ public class Character : MonoBehaviour {
     
     private Weapon _currentWeapon;
     private GameObject _weaponSlot;
+
+    private Vector3 _targetDirection;
     
     public int CurrentHealth { private set; get; }
     public bool Alive { private set; get; }
@@ -45,6 +47,16 @@ public class Character : MonoBehaviour {
 
     private void OnDisable() {
         EventBus.DeRegister<DamageEvent>(OnDamaged, null, gameObject);
+    }
+
+    private void FixedUpdate() {
+        if (_targetDirection == Vector3.zero) return;
+        
+        // convert the target direction to a world space vector
+        var t = transform;
+        var worldDirection = t.TransformDirection(_targetDirection);
+            
+        _rb.MovePosition(t.position + _characterData.moveSpeed * Time.fixedDeltaTime * worldDirection);
     }
 
     public static GameObject Spawn(CharacterData characterData, GameObject container, Vector3 position) {
@@ -118,11 +130,10 @@ public class Character : MonoBehaviour {
 
 
     public void MoveDirection(Vector3 moveDirection) {
-        // Set the target position so the player is correctly moved when the physics engine ticks
-        // Note the Time.deltaTime call which returns the time since call to Update(). This ensures our players movement is adjusted for the irregular intervals of the Update() call.
-        if (moveDirection != Vector3.zero) {
-            _rb.MovePosition(transform.position + _characterData.moveSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
-        }
+        // Set the target direction so the player is correctly moved when the physics engine ticks
+        // Note the Time.deltaTime call which returns the time since call to Update().
+        // This ensures our players movement is adjusted for the irregular intervals of the Update() call.
+        _targetDirection = moveDirection;
 
         // Update the animator
         _characterModel.animator.SetBool(AnimatorMoving, moveDirection != Vector3.zero);

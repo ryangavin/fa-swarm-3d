@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MoonLevelData
   m_EditorClassIdentifier: 
   scene: MoonScene
-  spawnPoint: {x: 0, y: 14, z: 0}
+  spawnPoint: {x: 0, y: 55, z: 0}
