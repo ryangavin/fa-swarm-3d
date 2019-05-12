@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour {
         var ray = _camera.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, _camera.nearClipPlane));
         var plane = new Plane(transformCache.up, transformCache.position);
         if (plane.Raycast(ray, out var distance)) {
-            Vector3 target = ray.GetPoint(distance);
-            Vector3 direction = transform.InverseTransformPoint(target);
+            var target = ray.GetPoint(distance);
+            var direction = transform.InverseTransformPoint(target);
             _character.Rotate(Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg);
         }
         

@@ -81,7 +81,6 @@
           <e p="Mixins" t="Include">
             <e p="Attractable.cs" t="Include" />
             <e p="Attractor.cs" t="Include" />
-            <e p="Bullet.cs" t="Include" />
             <e p="Character.cs" t="Include" />
             <e p="CharacterModel.cs" t="Include" />
             <e p="Damageable.cs" t="Include" />

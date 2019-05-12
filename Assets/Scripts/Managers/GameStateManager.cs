@@ -44,9 +44,14 @@ public class GameStateManager : MonoBehaviour {
         // Configure the cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        
+        // Lock the framerate to the refresh rate
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 144;
     }
     
     private void Start() {
+        // TODO move this to an event so we can create debug scenes which don't automatically load levels
         LoadLevel(gameMode.levels[0]);
     }
 

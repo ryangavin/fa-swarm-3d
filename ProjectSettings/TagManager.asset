@@ -19,8 +19,8 @@ TagManager:
   - 
   - Collision
   - Character
-  - 
-  - 
+  - PlayerProjectile
+  - PlayerCharacter
   - 
   - 
   - 
