@@ -39,15 +39,17 @@ public class GameStateManager : MonoBehaviour {
             // If there is already an instance, then just destroy whatever this is
             Debug.LogWarning("There is more than one GameStateManager in the scene");
             Destroy(gameObject);
+            return;
         }
 
         // Configure the cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         
+        // TODO create an options menu that controls the quality settings
         // Lock the framerate to the refresh rate
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 144;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
     
     private void Start() {
