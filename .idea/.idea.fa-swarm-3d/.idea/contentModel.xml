@@ -106,6 +106,7 @@
             <e p="GameState.cs" t="Include" />
             <e p="Levels" t="Include">
               <e p="LevelData.cs" t="Include" />
+              <e p="WaveData.cs" t="Include" />
             </e>
             <e p="Weapons" t="Include">
               <e p="Weapon.cs" t="Include" />

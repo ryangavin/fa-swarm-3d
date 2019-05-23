@@ -34,7 +34,10 @@ public class PlayerController : MonoBehaviour {
         
         // Check for a trigger click and fire the weapon
         if (Input.GetMouseButtonDown(0)) {
-            _character.UseWeapon();    // TODO why is this expensive
+            _character.SetFiring(true); // TODO why is this expensive
+        }
+        if (Input.GetMouseButtonUp(0)) {
+            _character.SetFiring(false);
         }
     }
 }

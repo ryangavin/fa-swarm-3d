@@ -33,9 +33,11 @@ public class Character : MonoBehaviour {
     
     private Weapon _currentWeapon;
     private GameObject _weaponSlot;
+    private bool _isFiring;
+    private float _timeUntilNextFire;
 
     private Vector3 _targetDirection;
-    
+
     public int CurrentHealth { private set; get; }
     public bool Alive { private set; get; }
 
@@ -49,13 +51,23 @@ public class Character : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (_targetDirection == Vector3.zero) return;
-        
-        // convert the target direction to a world space vector
-        var t = transform;
-        var worldDirection = t.TransformDirection(_targetDirection);
-            
-        _rb.MovePosition(t.position + _characterData.moveSpeed * Time.fixedDeltaTime * worldDirection);
+
+        // Apply any target movement
+        if (_targetDirection != Vector3.zero) {
+            // convert the target direction to a world space vector
+            var t = transform;
+            var worldDirection = t.TransformDirection(_targetDirection);
+            _rb.MovePosition(t.position + _characterData.moveSpeed * Time.fixedDeltaTime * worldDirection);
+        }
+
+        // Fire weapon
+        if (_isFiring) {
+            _timeUntilNextFire -= Time.deltaTime;
+            if (_timeUntilNextFire <= 0) {
+                FireWeapon();
+                _timeUntilNextFire = _currentWeapon.FireRate;
+            }
+        }
     }
 
     public static GameObject Spawn(CharacterData characterData, GameObject container, Vector3 position) {
@@ -142,7 +154,14 @@ public class Character : MonoBehaviour {
         _modelContainer.transform.localRotation = Quaternion.Euler(0, localAngle, 0);
     }
 
-    public void UseWeapon() {
+    public void SetFiring(bool isFiringWeapon) {
+        _isFiring = isFiringWeapon;
+        if (isFiringWeapon) {
+            _timeUntilNextFire = 0;
+        }
+    }
+
+    private void FireWeapon() {
 
         // Spawn the projectile
         var projectileSpawnPosition = _modelContainer.transform.TransformPoint(new Vector3(0, .2f, .3f));
