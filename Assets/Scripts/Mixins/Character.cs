@@ -61,6 +61,9 @@ public class Character : MonoBehaviour {
         }
 
         // Fire weapon
+        // TODO add some protection for repeatedly spamming the trigger
+        // TODO Ideally there is some min pause time
+        // TODO Perhaps this is secretly the ideal way to fire certain weapons
         if (_isAttacking) {
             _timeUntilNextAttack -= Time.deltaTime;
             if (_timeUntilNextAttack <= 0) {
