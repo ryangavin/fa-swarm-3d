@@ -33,8 +33,8 @@ public class Character : MonoBehaviour {
     
     private Weapon _currentWeapon;
     private GameObject _weaponSlot;
-    private bool _isFiring;
-    private float _timeUntilNextFire;
+    private bool _isAttacking;
+    private float _timeUntilNextAttack;
 
     private Vector3 _targetDirection;
 
@@ -61,11 +61,11 @@ public class Character : MonoBehaviour {
         }
 
         // Fire weapon
-        if (_isFiring) {
-            _timeUntilNextFire -= Time.deltaTime;
-            if (_timeUntilNextFire <= 0) {
-                FireWeapon();
-                _timeUntilNextFire = _currentWeapon.FireRate;
+        if (_isAttacking) {
+            _timeUntilNextAttack -= Time.deltaTime;
+            if (_timeUntilNextAttack <= 0) {
+                UseWeapon();
+                _timeUntilNextAttack = _currentWeapon.FireRate;
             }
         }
     }
@@ -154,14 +154,14 @@ public class Character : MonoBehaviour {
         _modelContainer.transform.localRotation = Quaternion.Euler(0, localAngle, 0);
     }
 
-    public void SetFiring(bool isFiringWeapon) {
-        _isFiring = isFiringWeapon;
-        if (isFiringWeapon) {
-            _timeUntilNextFire = 0;
+    public void SetAttacking(bool isAttacking) {
+        _isAttacking = isAttacking;
+        if (isAttacking) {
+            _timeUntilNextAttack = 0;
         }
     }
 
-    private void FireWeapon() {
+    private void UseWeapon() {
 
         // Spawn the projectile
         var projectileSpawnPosition = _modelContainer.transform.TransformPoint(new Vector3(0, .2f, .3f));

@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93b28a6d-10b2-41f5-bbf0-5495f4532e2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fa-swarm-3d/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fa-swarm-3d/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fa-swarm-3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.fa-swarm-3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/LaserBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectiles/LaserBullet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mixins/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mixins/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mixins/LevelManager/BaseLevelManagerComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mixins/LevelManager/BaseLevelManagerComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mixins/LevelManager/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mixins/LevelManager/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mixins/LevelManager/Wave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mixins/LevelManager/Wave.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Levels/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Levels/LevelData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Objects/Weapons/LaserGun.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Objects/Weapons/LaserGun.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,13 +87,13 @@
             <state relative-caret-position="860">
               <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
               <folding>
-                <marker date="1558490932812" expanded="true" signature="104:1807" ph="{...}" />
-                <marker date="1558490932812" expanded="true" signature="226:312" ph="{...}" />
-                <marker date="1558490932812" expanded="true" signature="318:680" ph="/* Update is called once per frame. ... */" />
-                <marker date="1558490932812" expanded="true" signature="699:1805" ph="{...}" />
-                <marker date="1558490932812" expanded="true" signature="1303:1518" ph="{...}" />
-                <marker date="1558490932812" expanded="true" signature="1626:1707" ph="{...}" />
-                <marker date="1558490932812" expanded="true" signature="1747:1799" ph="{...}" />
+                <marker date="1558576723440" expanded="true" signature="104:1813" ph="{...}" />
+                <marker date="1558576723440" expanded="true" signature="226:312" ph="{...}" />
+                <marker date="1558576723440" expanded="true" signature="318:680" ph="/* Update is called once per frame. ... */" />
+                <marker date="1558576723440" expanded="true" signature="699:1811" ph="{...}" />
+                <marker date="1558576723440" expanded="true" signature="1303:1518" ph="{...}" />
+                <marker date="1558576723440" expanded="true" signature="1626:1710" ph="{...}" />
+                <marker date="1558576723440" expanded="true" signature="1750:1805" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -110,39 +102,39 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Mixins/Character.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="159" column="35" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
+            <state relative-caret-position="246">
+              <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
               <folding>
-                <marker date="1558491658291" expanded="true" signature="6:52" ph="..." />
-                <marker date="1558491658291" expanded="true" signature="54:397" ph="/// The Character class is the base mixin for any characters in the game. ... " />
-                <marker date="1558491658291" expanded="true" signature="518:8898" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="1274:1350" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="1381:1459" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="1492:2133" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="1578:1869" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="1917:2127" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="2010:2117" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="2239:4924" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="2561:2610" ph="/* Reset some stuff ... */" />
-                <marker date="1558491658291" expanded="true" signature="3600:3726" ph="/* Change the weapon to the default weapon ... */" />
-                <marker date="1558491658291" expanded="true" signature="4185:4500" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="4510:4699" ph="/* Update the current planet of the character ... */" />
-                <marker date="1558491658291" expanded="true" signature="4787:4885" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="4970:5594" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="4993:5024" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="5099:5144" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="5650:6113" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="5660:5944" ph="/* Set the target direction so the player is correctly moved when the physics engine ticks ... */" />
-                <marker date="1558491658291" expanded="true" signature="6156:6249" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="6298:6417" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="6364:6411" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="6448:7409" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="6738:6856" ph="/* Modify the values of the OrbitalProjectile component ... */" />
-                <marker date="1558491658291" expanded="true" signature="7457:8033" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="7598:7629" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="7802:7836" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="8062:8896" ph="{...}" />
-                <marker date="1558491658291" expanded="true" signature="8479:8622" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="6:52" ph="..." />
+                <marker date="1558576723428" expanded="true" signature="54:397" ph="/// The Character class is the base mixin for any characters in the game. ... " />
+                <marker date="1558576723428" expanded="true" signature="518:8910" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="1279:1355" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="1386:1464" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="1497:2146" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="1583:1874" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="1925:2140" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="2022:2130" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="2252:4937" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="2574:2623" ph="/* Reset some stuff ... */" />
+                <marker date="1558576723428" expanded="true" signature="3613:3739" ph="/* Change the weapon to the default weapon ... */" />
+                <marker date="1558576723428" expanded="true" signature="4198:4513" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="4523:4712" ph="/* Update the current planet of the character ... */" />
+                <marker date="1558576723428" expanded="true" signature="4800:4898" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="4983:5607" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="5006:5037" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="5112:5157" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="5663:6126" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="5673:5957" ph="/* Set the target direction so the player is correctly moved when the physics engine ticks ... */" />
+                <marker date="1558576723428" expanded="true" signature="6169:6262" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="6311:6429" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="6374:6423" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="6460:7421" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="6750:6868" ph="/* Modify the values of the OrbitalProjectile component ... */" />
+                <marker date="1558576723428" expanded="true" signature="7469:8045" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="7610:7641" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="7814:7848" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="8074:8908" ph="{...}" />
+                <marker date="1558576723428" expanded="true" signature="8491:8634" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -944,13 +936,13 @@
         <state relative-caret-position="860">
           <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
           <folding>
-            <marker date="1558490932812" expanded="true" signature="104:1807" ph="{...}" />
-            <marker date="1558490932812" expanded="true" signature="226:312" ph="{...}" />
-            <marker date="1558490932812" expanded="true" signature="318:680" ph="/* Update is called once per frame. ... */" />
-            <marker date="1558490932812" expanded="true" signature="699:1805" ph="{...}" />
-            <marker date="1558490932812" expanded="true" signature="1303:1518" ph="{...}" />
-            <marker date="1558490932812" expanded="true" signature="1626:1707" ph="{...}" />
-            <marker date="1558490932812" expanded="true" signature="1747:1799" ph="{...}" />
+            <marker date="1558576723440" expanded="true" signature="104:1813" ph="{...}" />
+            <marker date="1558576723440" expanded="true" signature="226:312" ph="{...}" />
+            <marker date="1558576723440" expanded="true" signature="318:680" ph="/* Update is called once per frame. ... */" />
+            <marker date="1558576723440" expanded="true" signature="699:1811" ph="{...}" />
+            <marker date="1558576723440" expanded="true" signature="1303:1518" ph="{...}" />
+            <marker date="1558576723440" expanded="true" signature="1626:1710" ph="{...}" />
+            <marker date="1558576723440" expanded="true" signature="1750:1805" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -984,39 +976,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Mixins/Character.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="159" column="35" selection-start-line="159" selection-start-column="35" selection-end-line="159" selection-end-column="35" />
+        <state relative-caret-position="246">
+          <caret line="162" lean-forward="true" selection-start-line="162" selection-end-line="162" />
           <folding>
-            <marker date="1558491658291" expanded="true" signature="6:52" ph="..." />
-            <marker date="1558491658291" expanded="true" signature="54:397" ph="/// The Character class is the base mixin for any characters in the game. ... " />
-            <marker date="1558491658291" expanded="true" signature="518:8898" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="1274:1350" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="1381:1459" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="1492:2133" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="1578:1869" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="1917:2127" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="2010:2117" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="2239:4924" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="2561:2610" ph="/* Reset some stuff ... */" />
-            <marker date="1558491658291" expanded="true" signature="3600:3726" ph="/* Change the weapon to the default weapon ... */" />
-            <marker date="1558491658291" expanded="true" signature="4185:4500" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="4510:4699" ph="/* Update the current planet of the character ... */" />
-            <marker date="1558491658291" expanded="true" signature="4787:4885" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="4970:5594" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="4993:5024" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="5099:5144" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="5650:6113" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="5660:5944" ph="/* Set the target direction so the player is correctly moved when the physics engine ticks ... */" />
-            <marker date="1558491658291" expanded="true" signature="6156:6249" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="6298:6417" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="6364:6411" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="6448:7409" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="6738:6856" ph="/* Modify the values of the OrbitalProjectile component ... */" />
-            <marker date="1558491658291" expanded="true" signature="7457:8033" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="7598:7629" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="7802:7836" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="8062:8896" ph="{...}" />
-            <marker date="1558491658291" expanded="true" signature="8479:8622" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="6:52" ph="..." />
+            <marker date="1558576723428" expanded="true" signature="54:397" ph="/// The Character class is the base mixin for any characters in the game. ... " />
+            <marker date="1558576723428" expanded="true" signature="518:8910" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="1279:1355" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="1386:1464" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="1497:2146" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="1583:1874" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="1925:2140" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="2022:2130" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="2252:4937" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="2574:2623" ph="/* Reset some stuff ... */" />
+            <marker date="1558576723428" expanded="true" signature="3613:3739" ph="/* Change the weapon to the default weapon ... */" />
+            <marker date="1558576723428" expanded="true" signature="4198:4513" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="4523:4712" ph="/* Update the current planet of the character ... */" />
+            <marker date="1558576723428" expanded="true" signature="4800:4898" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="4983:5607" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="5006:5037" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="5112:5157" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="5663:6126" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="5673:5957" ph="/* Set the target direction so the player is correctly moved when the physics engine ticks ... */" />
+            <marker date="1558576723428" expanded="true" signature="6169:6262" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="6311:6429" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="6374:6423" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="6460:7421" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="6750:6868" ph="/* Modify the values of the OrbitalProjectile component ... */" />
+            <marker date="1558576723428" expanded="true" signature="7469:8045" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="7610:7641" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="7814:7848" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="8074:8908" ph="{...}" />
+            <marker date="1558576723428" expanded="true" signature="8491:8634" ph="{...}" />
           </folding>
         </state>
       </provider>
