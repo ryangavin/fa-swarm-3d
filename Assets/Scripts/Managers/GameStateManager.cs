@@ -87,6 +87,9 @@ public class GameStateManager : MonoBehaviour {
         
         // Publish a player spawn event
         EventBus.Publish(new PlayerSpawnEvent(gameObject, playerCharacterInstance));
+        
+        // Start the level
+        EventBus.Publish(new LevelStartEvent(gameObject, _currentLevel));
     }
 
     private void OnDamage(object eventArgs) { 

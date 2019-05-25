@@ -76,6 +76,7 @@
           </e>
           <e p="Managers" t="Include">
             <e p="GameStateManager.cs" t="Include" />
+            <e p="LevelManager.cs" t="Include" />
             <e p="PlanetManager.cs" t="Include" />
           </e>
           <e p="Mixins" t="Include">
@@ -88,11 +89,6 @@
             <e p="DamagingParticle.cs" t="Include" />
             <e p="DamagingProjectile.cs" t="Include" />
             <e p="EnemySpawner.cs" t="Include" />
-            <e p="LevelManager" t="Include">
-              <e p="BaseLevelManagerComponent.cs" t="Include" />
-              <e p="LevelManager.cs" t="Include" />
-              <e p="Wave.cs" t="Include" />
-            </e>
             <e p="OrbitalProjectile.cs" t="Include" />
             <e p="Persistable.cs" t="Include" />
           </e>

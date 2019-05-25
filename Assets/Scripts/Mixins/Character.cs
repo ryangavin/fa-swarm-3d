@@ -37,6 +37,8 @@ public class Character : MonoBehaviour {
     private float _timeUntilNextAttack;
 
     private Vector3 _targetDirection;
+    
+    private static readonly int DeathShaderStartTime = Shader.PropertyToID("_StartTime");
 
     public int CurrentHealth { private set; get; }
     public bool Alive { private set; get; }
@@ -74,6 +76,9 @@ public class Character : MonoBehaviour {
     }
 
     public static GameObject Spawn(CharacterData characterData, GameObject container, Vector3 position) {
+        
+        // TODO Make the character invulnerable during the spawn
+        
         var parentContainer = Instantiate(container);
         var characterScript = parentContainer.GetComponent<Character>();
         characterScript._characterData = characterData;
@@ -119,6 +124,10 @@ public class Character : MonoBehaviour {
         if (PlanetManager.Instance && PlanetManager.Instance.PlanetsInScene.Count > 0) {
             characterScript._currentPlanet = PlanetManager.Instance.PlanetsInScene[0];
         }
+        
+        // TODO play some kind of spawn animation if one is configured
+        
+        // TODO publish a CharacterSpawn event
 
         return parentContainer;
     }
@@ -172,6 +181,7 @@ public class Character : MonoBehaviour {
 
         // Modify the values of the OrbitalProjectile component
         // Perhaps this would be more efficient with a factory
+        // TODO convert this to a factory
         var orbitalProjectile = projectileInstance.GetComponent<OrbitalProjectile>();
         orbitalProjectile.Target = _currentPlanet;
         orbitalProjectile.Axis = _modelContainer.transform.right;    // Orbit around the players right axis -> shoot from the front and orbit the target using the player's forward as the origin.
@@ -201,7 +211,6 @@ public class Character : MonoBehaviour {
     }
 
     private void OnDeath() {
-        Debug.Log("Character OnDeath()");
         // Mark this character as not alive
         Alive = false;
 
@@ -212,7 +221,7 @@ public class Character : MonoBehaviour {
         var renderers = new List<Renderer>(GetComponentsInChildren<Renderer>());
         foreach (var r in renderers) {
             r.material.shader = _characterData.deathShader;
-            r.material.SetFloat("_StartTime", Time.timeSinceLevelLoad);
+            r.material.SetFloat(DeathShaderStartTime, Time.timeSinceLevelLoad);
         }
 
         // Destroy the object later

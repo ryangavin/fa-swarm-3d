@@ -9,4 +9,8 @@ public class GameState : ScriptableObject {
     public Character playerCharacter;
     public int score;
     public bool gameOver;
+
+    public Vector3 PlayerPosition() {
+        return GameStateManager.Instance.gamestate.playerGameObject.transform.position;
+    }
 }

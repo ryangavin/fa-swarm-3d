@@ -8,5 +8,6 @@ public class CharacterData : ScriptableObject {
    public int health;
    public float moveSpeed;
    public Shader deathShader;
+   public Shader spawnShader;
 
 }

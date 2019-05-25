@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileVelocity: 80
   ImpactVeloctiy: 20
-  FireRate: 0.2
+  FireRate: 0.05
   Lifetime: 2
   ProjectileObject: {fileID: 8893923812074707501, guid: 87011170c2162a447a04fea2551ee2bc,
     type: 3}
