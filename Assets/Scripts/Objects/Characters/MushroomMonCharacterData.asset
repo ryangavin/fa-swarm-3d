@@ -15,7 +15,8 @@ MonoBehaviour:
   characterModel: {fileID: 5499513514095402979, guid: 291c98af6b3b10f48b7a367663259833,
     type: 3}
   defaultWeapon: {fileID: 0}
-  health: 1
+  health: 3
   moveSpeed: 5
   deathShader: {fileID: -6465566751694194690, guid: 50b65f3a6675fc548a523aa3ba340b05,
     type: 3}
+  spawnShader: {fileID: 0}

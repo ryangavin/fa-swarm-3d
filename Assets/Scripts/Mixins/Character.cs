@@ -75,6 +75,9 @@ public class Character : MonoBehaviour {
         }
     }
 
+    // TODO perhaps split the actual spawning and the idea of instantiating a complete container.
+    // TODO spawn could become a nonstatic member of the instantiated class. 
+    // TODO without this there is no cheap way to respawn a character without completely destorying the gameobject.
     public static GameObject Spawn(CharacterData characterData, GameObject container, Vector3 position) {
         
         // TODO Make the character invulnerable during the spawn
@@ -125,9 +128,18 @@ public class Character : MonoBehaviour {
             characterScript._currentPlanet = PlanetManager.Instance.PlanetsInScene[0];
         }
         
-        // TODO play some kind of spawn animation if one is configured
+        // Get all the children components 
+        var awareBehaviors = parentContainer.GetComponentsInChildren<ICharacterContainerAware>();
+        foreach (var behavior in awareBehaviors) {
+            behavior.SetParent(parentContainer);
+        }
         
-        // TODO publish a CharacterSpawn event
+        // TODO Move everything from here down into a instance function 
+        
+        // TODO play some kind of spawn animation if one is configured
+
+        // Publish a CharacterSpawn event
+        EventBus.Publish(new CharacterSpawnEvent(parentContainer, parentContainer, characterData));
 
         return parentContainer;
     }
